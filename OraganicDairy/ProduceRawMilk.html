@@ -37,8 +37,57 @@
                 </div>
             </div>
 
+         <div class="container4">
             <div>
+                <label for="Quality of Raw Milk">Quality of Raw Milk:</label>
+                <form action="/submit">
+                    <input type="checkbox" id="MainQualityRM1" onclick="toggleSubCheckboxes()" name="MainQualityRM1" value="Bacterial">
+                    <label for="MainQualityRM1">Bacterial Testing</label><br>
+                        <div id="subText" class="sub-Text">
+                            <input type="text" id="subText1" name="BactrialTest" placeholder="Please fill in additional information.">
+                        </div>
+                    <input type="checkbox" id="MainQualityRM2" onclick="toggleSubCheckboxes()" name="MainQualityRM2" value="Contaminants">
+                    <label for="MainQualityRM2">Contaminants</label><br>
+                    <div id="subText" class="sub-Text">
+                        <input type="text" id="subText1" name="BactrialTest" placeholder="Please fill in additional information.">                        </div>
+                        <label for="MainQualityRM3">pH of Raw Milk</label>
+                        <input type="number" id="MainQualityRM3" name="MainQualityRM3" step="0.01" placeholder="0.00"><br>
+                        <label for="MainQualityRM4">Fat</label>
+                        <input type="number" id="MainQualityRM4" name="MainQualityRM4" step="0.01" placeholder="0.00">
+                        <label for="MainQualityRM5">Protein</label>
+                        <input type="number" id="MainQualityRM5" name="MainQualityRM5" step="0.01" placeholder="0.00"><br>
+                        <input type="checkbox" id="MainQualityRM6" onclick="toggleSubCheckboxes()" name="MainQualityRM6" value="stWrong">
+                        <label for="MainQualityRM6">Abnormal characteristics</label>
+                        <div id="subCheckboxes" class="sub-checkboxes">
+                            <input type="checkbox" name="subCheckbox1" id="subCheckbox1">
+                            <label for="subCheckbox1">Smell bad</label><br>
+                            <input type="checkbox" name="subCheckbox2" id="subCheckbox2">
+                            <label for="subCheckbox2">Smell not fresh</label><br>
+                            <input type="checkbox" name="subCheckbox3" id="subCheckbox3">
+                            <label for="subCheckbox3">Abnormal color such as yellow or green</label><br>
+                            <input type="checkbox" name="subCheckbox4" id="subCheckbox4" >
+                            <label for="subCheckbox4">Sour taste</label><br>
+                            <input type="checkbox" name="subCheckbox5" id="subCheckbox5">
+                            <label for="subCheckbox5">Bitter taste</label><br>
+                            <input type="checkbox" name="subCheckbox6" id="subCheckbox6">
+                            <label for="subCheckbox6">Cloudy appearance</label><br>
+                            <input type="checkbox" name="subCheckbox7" id="subCheckbox7">
+                            <label for="subCheckbox7">Lumpy appearance</label><br>
+                            <input type="checkbox" name="subCheckbox8" id="subCheckbox8">
+                            <label for="subCheckbox8">There is a separation between water and fat.</label>
+                        </div>
 
+                        <div class="container5">
+                            <div>
+                                <label for="Location">Location</label>
+                                <div id="map"></div>
+                                <input type="url" name="LocationLink" id="LocationLink" placeholder="https://example.com/location" required>
+                            </div>
+                        </div>
+                        <br><input type="submit" value="Submit">
+                    </form>
+            </div>
+                
             </div>
         </div>
     </div>

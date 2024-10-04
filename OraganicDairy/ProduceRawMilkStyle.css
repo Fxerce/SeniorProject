@@ -46,3 +46,10 @@ select {
   background-color: brown;
   color: white;
 }
+
+
+#map{
+  margin-left: 20px;
+  height: 400px;
+  width: 100%;
+}
