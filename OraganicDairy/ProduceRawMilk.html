@@ -12,13 +12,13 @@
     <div class="container">
         <div class="container2">
             <div>
-                <label for="PersonInCharge">Person in charge:</label>
+                <label class="boldLabel" for="PersonInCharge">Person in charge:</label>
                 <input type="text" id="PersonInCharge" name="PersonInCharge">
             </div>
 
             <div class="container3">
                 <div>
-                    <label for="Quantity">Quantity:</label>
+                    <label class="boldLabel" for="Quantity">Quantity:</label>
                     <input type="number" id="Quantity" name="Quantity" step="0.01" placeholder="0.00">
                     <select name="QuantityUnit" id="QuantityUnit">
                         <option value="Liter">Liter</option>
@@ -28,7 +28,7 @@
                 </div>
 
                 <div style="margin-left: 400px;">
-                    <label for="Temperature">Temperature:</label>
+                    <label class="boldLabel"  for="Temperature">Temperature:</label>
                     <input type="number" id="Temperature" name="Temperature" step="0.01" placeholder="0.00">
                     <select name="TemperatureUnit" id="TemperatureUnit">
                         <option value="Celcius">°C</option>
@@ -37,27 +37,53 @@
                 </div>
             </div>
 
+            <script>
+                function toggleSubCheckboxes(mainCheckboxId, subElementId){
+                    var mainCheckbox = document.getElementById(mainCheckboxId);
+                    var subElement = document.getElementById(subElementId);
+
+                    // show / hide sub-element ตามสถานะการ click ของ main-checkbox
+                    if(mainCheckbox.checked){
+                        subElement.style.display = "block"; //show sub-checkbox
+                    
+                    } else{
+                        subElement.style.display = "none"; //hide
+                    }
+
+                }
+            </script>
          <div class="container4">
             <div>
-                <label for="Quality of Raw Milk">Quality of Raw Milk:</label>
+                <label class="boldLabel"  for="Quality of Raw Milk">Quality of Raw Milk:</label>
                 <form action="/submit">
-                    <input type="checkbox" id="MainQualityRM1" onclick="toggleSubCheckboxes()" name="MainQualityRM1" value="Bacterial">
-                    <label for="MainQualityRM1">Bacterial Testing</label><br>
-                        <div id="subText" class="sub-Text">
-                            <input type="text" id="subText1" name="BactrialTest" placeholder="Please fill in additional information.">
+
+                    <!--Main CB 1: pH-->
+                    <label for="MainQualityRM1">pH of Raw Milk</label>
+                    <input type="number" id="MainQualityRM3" name="MainQualityRM3" step="0.01" placeholder="0.00"><br>
+                    <!--Main CB 2: Fat-->
+                    <label for="MainQualityRM2">Fat</label>
+                    <input type="number" id="MainQualityRM4" name="MainQualityRM4" step="0.01" placeholder="0.00">
+                    <!--Main CB 3: Protein-->
+                    <label for="MainQualityRM3">Protein</label>
+                    <input type="number" id="MainQualityRM5" name="MainQualityRM5" step="0.01" placeholder="0.00"><br>
+
+                    <!--Main CB 4: Bacterial Testing-->
+                    <input type="checkbox" id="MainQualityRM1" onclick="toggleSubCheckboxes('MainQualityRM1', 'subText1')" name="MainQualityRM1" value="Bacterial">
+                    <label for="MainQualityRM4">Bacterial Testing</label><br>
+                        <div id="subText1" class="sub-Text">
+                            <input type="text" name="BactrialTest" placeholder="Please fill in additional information.">
                         </div>
-                    <input type="checkbox" id="MainQualityRM2" onclick="toggleSubCheckboxes()" name="MainQualityRM2" value="Contaminants">
-                    <label for="MainQualityRM2">Contaminants</label><br>
-                    <div id="subText" class="sub-Text">
-                        <input type="text" id="subText1" name="BactrialTest" placeholder="Please fill in additional information.">                        </div>
-                        <label for="MainQualityRM3">pH of Raw Milk</label>
-                        <input type="number" id="MainQualityRM3" name="MainQualityRM3" step="0.01" placeholder="0.00"><br>
-                        <label for="MainQualityRM4">Fat</label>
-                        <input type="number" id="MainQualityRM4" name="MainQualityRM4" step="0.01" placeholder="0.00">
-                        <label for="MainQualityRM5">Protein</label>
-                        <input type="number" id="MainQualityRM5" name="MainQualityRM5" step="0.01" placeholder="0.00"><br>
-                        <input type="checkbox" id="MainQualityRM6" onclick="toggleSubCheckboxes()" name="MainQualityRM6" value="stWrong">
-                        <label for="MainQualityRM6">Abnormal characteristics</label>
+                    
+                    <!--Main CB 5: Contaminants-->
+                    <input type="checkbox" id="MainQualityRM2" onclick="toggleSubCheckboxes('MainQualityRM2', 'subText2')" name="MainQualityRM2" value="Contaminants">
+                    <label for="MainQualityRM5">Contaminants</label><br>
+                    <div id="subText2" class="sub-Text">
+                        <input type="text" name="Contaminants" placeholder="Please fill in additional information.">                        
+                    </div>
+                    <!--Main CB 6: Abnormal Characteristics-->
+                        <input type="checkbox" id="MainQualityRM6" onclick="toggleSubCheckboxes('MainQualityRM6', 'subCheckboxes')" name="MainQualityRM6" value="stWrong">
+                        <label for="mainCheckbox">Abnormal characteristics</label>
+                        <!--Sub-->
                         <div id="subCheckboxes" class="sub-checkboxes">
                             <input type="checkbox" name="subCheckbox1" id="subCheckbox1">
                             <label for="subCheckbox1">Smell bad</label><br>
@@ -77,19 +103,115 @@
                             <label for="subCheckbox8">There is a separation between water and fat.</label>
                         </div>
 
+
+
                         <div class="container5">
                             <div>
-                                <label for="Location">Location</label>
-                                <div id="map"></div>
+                                <label class="boldLabel" for="Location">Location</label>
+                                <div id="Gmap" style="height: 400px; width: 400px;">
+                                    <!--<script>
+                                        let Gmap;
+                                        let marker;
+            
+                                        function initMap() {
+                                            Gmap = new google.maps.Map(document.getElementById("Gmap"), {
+                                                center: { lat: 13.7563, lng: 100.5018 },
+                                                zoom: 10,
+                                            });
+            
+                                            Gmap.addListener("click", (event) => {
+                                                placeMarker(event.latLng);
+                                            });
+                                        }
+            
+                                        function placeMarker(location) {
+                                            if (marker) {
+                                                marker.setMap(null); //remove old marker
+                                            }
+            
+                                            marker = new google.maps.Marker({   //set new marker
+                                                position: location,
+                                                map: Gmap,
+                                            });
+            
+                                            const lat = location.lat();
+                                            const lng = location.lng();
+                                            console.log("Lat: " + lat + ", Lng: " + lng);
+                                        }
+                                    </script>-->
+                                </div>
                                 <input type="url" name="LocationLink" id="LocationLink" placeholder="https://example.com/location" required>
                             </div>
+                            <script>
+                                let Gmap;
+                                let marker;
+
+                                function initMap() {
+                                Gmap = new google.maps.Map(document.getElementById("Gmap"), {
+                                    center: { lat: 13.7563, lng: 100.5018 },
+                                    zoom: 10,
+                                });
+
+                                Gmap.addListener("click", (event) => {
+                                    placeMarker(event.latLng);
+                                    updateCoordinates(event.latLng);
+                                 });
+                            }
+
+                            function placeMarker(location) {
+                                if (marker) {
+                                    marker.setMap(null); // remove old marker
+                                 }
+
+                                marker = new google.maps.Marker({ // set new marker
+                                    position: location,
+                                    map: Gmap,
+                                });
+                            }
+
+                            function updateCoordinates(location) {
+                                 const lat = location.lat();
+                                const lng = location.lng();
+                                document.getElementById("coordinates").innerText = `Latitude: ${lat}, Longitude: ${lng}`;
+                                document.getElementById("LocationLink").value = `https://maps.google.com/?q=${lat},${lng}`; // Update input with Google Maps link
+                             }
+
+                            document.getElementById("LocationLink").addEventListener("change", function() {
+                                const url = this.value;
+                                const latLng = getLatLngFromURL(url);
+                                if (latLng) {
+                                    placeMarker(latLng);
+                                    Gmap.setCenter(latLng);
+                                    updateCoordinates(latLng);
+                                 }
+                            });
+
+                            function getLatLngFromURL(url) {
+                            const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+                            const match = url.match(regex);
+                            if (match) {
+                                const lat = parseFloat(match[1]);
+                                const lng = parseFloat(match[2]);
+                                return { lat, lng };
+                            }
+                            return null;
+                         }
+                            </script>
                         </div>
-                        <br><input type="submit" value="Submit">
+                        <input type="submit" value="Submit" style="margin-top: 10px;">
+                        <p id="coordinates"></p> <!--Display coordinates-->
                     </form>
+
+                    
             </div>
                 
             </div>
         </div>
     </div>
 </body>
+
+<script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4l6cSn6f3m4FLynCgDAvGN12rwgl4LvU&callback=initMap">
+    
+</script>
 </html>

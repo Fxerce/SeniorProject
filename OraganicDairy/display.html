@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Data</title>
+</head>
+<body>
+    <h1>Submitted Data</h1>
+    <ul id="dataList"></ul>
+
+    <script>
+        fetch('/display')
+            .then(response => response.json())
+            .then(data => {
+                const dataList = document.getElementById('dataList');
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `Name: ${item.name}, Value: ${item.value}`;
+                    dataList.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
