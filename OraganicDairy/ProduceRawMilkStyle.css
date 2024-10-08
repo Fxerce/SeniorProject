@@ -77,4 +77,10 @@ select {
 .sub-Text, .sub-checkboxes{
   display: none; /*hide sub-element */
   margin-left: 20px;
+  
+}
+
+#Address{
+  width: 800px;
+  height: 200px;
 }

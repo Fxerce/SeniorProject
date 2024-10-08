@@ -55,7 +55,7 @@
          <div class="container4">
             <div>
                 <label class="boldLabel"  for="Quality of Raw Milk">Quality of Raw Milk:</label>
-                <form action="/submit">
+                <form id="milkForm" action="/submit" method="POST">
 
                     <!--Main CB 1: pH-->
                     <label for="MainQualityRM1">pH of Raw Milk</label>
@@ -107,6 +107,8 @@
 
                         <div class="container5">
                             <div>
+                                <label class="boldLabel" for="Address">Address</label><br>
+                                <input type="text" name="Address" id="Address"><br>
                                 <label class="boldLabel" for="Location">Location</label>
                                 <div id="Gmap" style="height: 400px; width: 400px;">
                                     <!--<script>
@@ -142,6 +144,30 @@
                                 </div>
                                 <input type="url" name="LocationLink" id="LocationLink" placeholder="https://example.com/location" required>
                             </div>
+                            <script>
+                                document.getElementById('milkForm').addEventListener('submit', function(e) {
+                                    e.preventDefault(); // ป้องกันไม่ให้หน้าโหลดซ้ำ
+                                    const formData = new FormData(this);
+                                    const data = Object.fromEntries(formData.entries());
+                            
+                                    fetch('/submit', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify(data),
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log('สำเร็จ:', data);
+                                        window.location.href = '/display';  // เมื่อส่งข้อมูลแล้วให้เปลี่ยนไปยังหน้าที่แสดงข้อมูล
+                                    })
+                                    .catch((error) => {
+                                        console.error('เกิดข้อผิดพลาด:', error);
+                                    });
+                                });
+                            </script>
+                            
                             <script>
                                 let Gmap;
                                 let marker;
@@ -198,7 +224,7 @@
                          }
                             </script>
                         </div>
-                        <input type="submit" value="Submit" style="margin-top: 10px;">
+                        <input id="Submit" type="submit" value="Submit" style="margin-top: 10px;">
                         <p id="coordinates"></p> <!--Display coordinates-->
                     </form>
 

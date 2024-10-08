@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลที่ส่งมา</title>
+</head>
+<body>
+    <h1>ข้อมูลที่ถูกส่งมา</h1>
+    <ul id="dataList"></ul>
+
+    <script>
+        fetch('/display')
+            .then(response => response.json())
+            .then(data => {
+                const dataList = document.getElementById('dataList');
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `Person in Charge: ${item.PersonInCharge}, Quantity: ${item.Quantity} ${item.QuantityUnit}, Temperature: ${item.Temperature} ${item.TemperatureUnit}`;
+                    dataList.appendChild(li);
+                });
+            })
+            .catch(error => console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error));
+    </script>
+</body>
+</html>
