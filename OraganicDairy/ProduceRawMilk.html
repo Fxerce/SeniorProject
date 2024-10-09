@@ -14,6 +14,8 @@
             <div>
                 <label class="boldLabel" for="PersonInCharge">Person in charge:</label>
                 <input type="text" id="PersonInCharge" name="PersonInCharge">
+                <label class="boldLabel" for="MilkTankNum">Milk Tank Number:</label>
+                <input type="number" name="MilkTankNum" id="MilkTankNum" placeholder="Enter your milk tank number">
             </div>
 
             <div class="container3">
@@ -62,23 +64,23 @@
                     <input type="number" id="MainQualityRM3" name="MainQualityRM3" step="0.01" placeholder="0.00"><br>
                     <!--Main CB 2: Fat-->
                     <label for="MainQualityRM2">Fat</label>
-                    <input type="number" id="MainQualityRM4" name="MainQualityRM4" step="0.01" placeholder="0.00">
+                    <input type="number" id="MainQualityRM4" name="MainQualityRM4" step="0.01" placeholder="0.00 %">
                     <!--Main CB 3: Protein-->
                     <label for="MainQualityRM3">Protein</label>
-                    <input type="number" id="MainQualityRM5" name="MainQualityRM5" step="0.01" placeholder="0.00"><br>
+                    <input type="number" id="MainQualityRM5" name="MainQualityRM5" step="0.01" placeholder="0.00 %"><br>
 
                     <!--Main CB 4: Bacterial Testing-->
                     <input type="checkbox" id="MainQualityRM1" onclick="toggleSubCheckboxes('MainQualityRM1', 'subText1')" name="MainQualityRM1" value="Bacterial">
                     <label for="MainQualityRM4">Bacterial Testing</label><br>
                         <div id="subText1" class="sub-Text">
-                            <input type="text" name="BactrialTest" placeholder="Please fill in additional information.">
+                            <input id="checkboxTextInput" type="text" name="BactrialTest" placeholder="Please fill in additional information." style="width: 300px;">
                         </div>
                     
                     <!--Main CB 5: Contaminants-->
                     <input type="checkbox" id="MainQualityRM2" onclick="toggleSubCheckboxes('MainQualityRM2', 'subText2')" name="MainQualityRM2" value="Contaminants">
                     <label for="MainQualityRM5">Contaminants</label><br>
                     <div id="subText2" class="sub-Text">
-                        <input type="text" name="Contaminants" placeholder="Please fill in additional information.">                        
+                        <input type="text" name="Contaminants" placeholder="Please fill in additional information." style="width: 300px;">                        
                     </div>
                     <!--Main CB 6: Abnormal Characteristics-->
                         <input type="checkbox" id="MainQualityRM6" onclick="toggleSubCheckboxes('MainQualityRM6', 'subCheckboxes')" name="MainQualityRM6" value="stWrong">
@@ -224,7 +226,7 @@
                          }
                             </script>
                         </div>
-                        <input id="Submit" type="submit" value="Submit" style="margin-top: 10px;">
+                        <input id="btn" type="submit" value="Submit" style="margin-top: 10px;">
                         <p id="coordinates"></p> <!--Display coordinates-->
                     </form>
 

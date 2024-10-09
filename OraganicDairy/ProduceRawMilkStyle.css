@@ -18,7 +18,8 @@ h1 {
 
 .container2 {
   display: grid;
-  gap: 10px;
+  gap: 15px;
+  justify-content: space-between;
 }
 
 .container3 {
@@ -26,6 +27,10 @@ h1 {
   justify-content: space-between;
 }
 
+.container5{
+  gap: 15px;
+  
+}
 label {
   display: inline-block;
   font-size: 24px;
@@ -36,7 +41,8 @@ label {
 input {
   font-family: 'quicksand';
   display: inline-block;
-  border-radius: 3px;
+  border-radius: 20px;
+  height: 20px;
 }
 
 select {
@@ -55,7 +61,6 @@ select {
 
 .sub-Text {
   width: 300px;
-  height: 100px;
 }
 
 #LocationLink, #PersonInCharge{
@@ -64,6 +69,7 @@ select {
 
 #LocationLink {
   margin-top: 20px;
+  height: 20px;
 }
 
 .placeholder {
@@ -77,10 +83,21 @@ select {
 .sub-Text, .sub-checkboxes{
   display: none; /*hide sub-element */
   margin-left: 20px;
-  
+  border: 20px;
 }
 
 #Address{
   width: 800px;
   height: 200px;
+}
+
+#btn{
+    width: 100px;
+    height: 30px;
+    border-radius: 100px;
+    background-color: #A28569;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
 }
