@@ -3,63 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Raw Milk Data</title>
-    <link rel="stylesheet" href="displaydemo.css">
+    <title>QR Code and Barcode Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            width: 300px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+        #qrcode, #barcode {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Raw Milk Data</h1>
-    
-    <table id="dataTable">
-        <thead>
-            <tr>
-                <th>Field</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
 
-    <script>
-        // ข้อมูลที่ได้จากเซิร์ฟเวอร์
-        const receivedData = {
-            "PersonInCharge": "John Doe",
-            "MilkTankNum": 12345,
-            "Quantity": 500,
-            "QuantityUnit": "Liter",
-            "Temperature": 4,
-            "TemperatureUnit": "°C",
-            "MainQualityRM3": 6.8,
-            "MainQualityRM4": 3.5,
-            "MainQualityRM5": 3.1,
-            "BactrialTest": "Negative",
-            "Contaminants": "None",
-            "AbnormalCharacteristics": ["Smell bad", "Cloudy appearance"],
-            "Address": "123 Dairy Road",
-            "LocationLink": "https://maps.google.com/?q=13.7563,100.5018"
-        };
-
-        // ฟังก์ชันแสดงข้อมูลในรูปแบบตาราง
-        function displayDataInTable(data) {
-            const tbody = document.querySelector("#dataTable tbody");
-            tbody.innerHTML = `
-                <tr><td><strong>Person in Charge</strong></td><td>${data.PersonInCharge}</td></tr>
-                <tr><td><strong>Milk Tank Number</strong></td><td>${data.MilkTankNum}</td></tr>
-                <tr><td><strong>Quantity</strong></td><td>${data.Quantity} ${data.QuantityUnit}</td></tr>
-                <tr><td><strong>Temperature</strong></td><td>${data.Temperature} ${data.TemperatureUnit}</td></tr>
-                <tr><td><strong>pH</strong></td><td>${data.MainQualityRM3}</td></tr>
-                <tr><td><strong>Fat</strong></td><td>${data.MainQualityRM4}%</td></tr>
-                <tr><td><strong>Protein</strong></td><td>${data.MainQualityRM5}%</td></tr>
-                <tr><td><strong>Bacterial Testing</strong></td><td>${data.BactrialTest}</td></tr>
-                <tr><td><strong>Contaminants</strong></td><td>${data.Contaminants}</td></tr>
-                <tr><td><strong>Abnormal Characteristics</strong></td><td>${data.AbnormalCharacteristics.join(", ")}</td></tr>
-                <tr><td><strong>Address</strong></td><td>${data.Address}</td></tr>
-                <tr><td><strong>Location</strong></td><td><a href="${data.LocationLink}" target="_blank">Google Maps Link</a></td></tr>
-            `;
-        }
-
-        // เรียกฟังก์ชันแสดงข้อมูลเมื่อโหลดหน้า
-        displayDataInTable(receivedData);
-    </script>
     <h1>QR Code and Barcode Generator</h1>
 
     <!-- Input Field to Simulate Barcode Scan -->
