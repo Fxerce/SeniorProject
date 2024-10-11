@@ -60,18 +60,26 @@
         // เรียกฟังก์ชันแสดงข้อมูลเมื่อโหลดหน้า
         displayDataInTable(receivedData);
     </script>
-    <h1>QR Code and Barcode Generator</h1>
+    <div class="QRCandBC">
+        <h1>QR Code and Barcode Generator</h1>
 
-    <!-- Input Field to Simulate Barcode Scan -->
-    <h2>Scan Barcode (Simulated)</h2>
-    <input type="text" id="barcodeInput" placeholder="Scan Barcode or enter ID">
-    <button onclick="scanBarcode()">Scan Barcode</button>
-
-    <!-- Input Field to Simulate QR Code Scan -->
-    <h2>Scan QR Code (Simulated)</h2>
-    <input type="text" id="qrInput" placeholder="Scan QR Code or enter data">
-    <button onclick="scanQRCode()">Scan QR Code</button>
-
+        <div class="Barcode">
+        <!-- Input Field to Simulate Barcode Scan -->
+        <h2>Scan Barcode (Simulated)</h2>
+        <input type="text" id="barcodeInput" placeholder="Scan Barcode or enter ID">
+        <button onclick="scanBarcode()">Scan Barcode</button>
+        </div>
+        
+        <div class="QRcode">
+            <!-- Input Field to Simulate QR Code Scan -->
+        <h2>Scan QR Code (Simulated)</h2>
+        <input type="text" id="qrInput" placeholder="Scan QR Code or enter data">
+        <button onclick="scanQRCode()">Scan QR Code</button>
+        </div>
+        
+    
+        
+    </div>
     <!-- Displays QR Code and Barcode -->
     <div id="qrcode"></div>
     <div id="barcode"></div>
