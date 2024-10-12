@@ -3,114 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code and Barcode Generator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        input {
-            width: 300px;
-            padding: 10px;
-            margin-top: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            margin-top: 10px;
-        }
-        #qrcode, #barcode {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Add Products</title>
+    <link rel="stylesheet" href="trycodeStyle.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Add Products</h1>
+        <div class="form-container">
+            <div class="image-upload">
+                <div  id="UploadImg">
+                    <label  for="upload-image">Upload Image</label>
+                </div>
+                
+                <div class="upload-box" id="drop-area">
+                    <input type="file" id="upload-image" accept="image/*" multiple onchange="previewImage(event)">
+                    <img id="main-preview" src="#" alt="Main Image Preview" style="display: none;">
+                    <p>Drag & Drop file here or click to browse (4 mb max)</p>
+                </div>
 
-    <h1>QR Code and Barcode Generator</h1>
+                <div class="img-list" id="image-list"></div>
+            </div>
+            <div class="product-details">
+                <form id="product-form">
+                    <label for="product-name">Product Name</label>
+                    <input type="text" id="product-name" placeholder="Enter product name">
 
-    <!-- Input Field to Simulate Barcode Scan -->
-    <h2>Scan Barcode (Simulated)</h2>
-    <input type="text" id="barcodeInput" placeholder="Scan Barcode or enter ID">
-    <button onclick="scanBarcode()">Scan Barcode</button>
+                    <label for="price">Price</label>
+                    <input type="text" id="price" placeholder="Enter price">
 
-    <!-- Input Field to Simulate QR Code Scan -->
-    <h2>Scan QR Code (Simulated)</h2>
-    <input type="text" id="qrInput" placeholder="Scan QR Code or enter data">
-    <button onclick="scanQRCode()">Scan QR Code</button>
+                    <label for="sku">SKU</label>
+                    <input type="text" id="sku" placeholder="Enter SKU">
 
-    <!-- Displays QR Code and Barcode -->
-    <div id="qrcode"></div>
-    <div id="barcode"></div>
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" placeholder="Enter quantity">
 
-    <!-- Script and Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode/dist/JsBarcode.all.min.js"></script>
-    
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Enter description"></textarea>
+
+                    <label for="color">Color</label>
+                    <input type="text" id="color" placeholder="Enter color">
+
+                    <label for="size">Size</label>
+                    <input type="text" id="size" placeholder="Enter size">
+
+                    <label for="brands">Brands</label>
+                    <input type="text" id="brands" placeholder="Enter brands">
+
+                    <label for="category">Category</label>
+                    <input type="text" id="category" placeholder="Enter category">
+
+                    <button type="submit" id="publish-btn">Publish Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Global JSON Data to store scanned info
-        let scannedData = {
-            "barcodeData": "",
-            "qrCodeData": ""
-        };
+       // Function to preview multiple images
+    function previewImages(event) {
+        const files = event.target.files;
+        const mainPreview = document.getElementById('main-preview');
+        const imageList = document.getElementById('image-list');
 
-        // Function to simulate scanning Barcode
-        function scanBarcode() {
-            const barcodeInput = document.getElementById("barcodeInput").value;
-            if (barcodeInput) {
-                scannedData.barcodeData = barcodeInput; // Save the scanned barcode data
-                displayBarcode(); // Show the barcode
-            } else {
-                alert("Please enter data to scan.");
-            }
+        imageList.innerHTML = ''; // ล้างรายการรูปเล็กเก่าก่อน
+
+        if (files.length > 0) {
+            // แสดงรูปแรกเป็นรูปใหญ่
+            const firstImage = URL.createObjectURL(files[0]);
+            mainPreview.src = firstImage;
+            mainPreview.style.display = 'block';
+
+            // แสดงรูปเล็กๆ ในลิสต์ด้านล่าง
+            for (let i = 0; i < files.length; i++) {
+                const imgUrl = URL.createObjectURL(files[i]);
+                const imgElement = document.createElement('img');
+                imgElement.src = imgUrl;
+                imgElement.alt = `Image ${i + 1}`;
+
+                // เมื่อคลิกที่รูปเล็ก จะเปลี่ยนรูปใหญ่
+                imgElement.addEventListener('click', function() {
+                    mainPreview.src = imgUrl;
+                });
+
+                imageList.appendChild(imgElement);
         }
+    }
+}
 
-        // Function to simulate scanning QR Code
-        function scanQRCode() {
-            const qrInput = document.getElementById("qrInput").value;
-            if (qrInput) {
-                scannedData.qrCodeData = qrInput; // Save the scanned QR code data
-                displayQRCode(); // Show the QR Code
-            } else {
-                alert("Please enter data to scan.");
-            }
-        }
-
-        // Function to display the Barcode
-        function displayBarcode() {
-            const barcodeContainer = document.getElementById("barcode");
-            barcodeContainer.innerHTML = ""; // Clear any previous barcode
-            JsBarcode(barcodeContainer, scannedData.barcodeData, {
-                format: "CODE128",
-                displayValue: true
-            });
-        }
-
-        // Function to display the QR Code
-        function displayQRCode() {
-            const qrCodeContainer = document.getElementById("qrcode");
-            qrCodeContainer.innerHTML = ""; // Clear any previous QR code
-            QRCode.toCanvas(qrCodeContainer, scannedData.qrCodeData, function (error) {
-                if (error) console.error(error);
-            });
-        }
-
-        // Generate QR and Barcode when data is scanned and stored
-        function generateQRCodeBarcode() {
-            // Example data that would be generated upon scanning
-            const qrData = "https://www.example.com";
-            const barcodeData = "123456789012";
-
-            // Update JSON with scanned data
-            scannedData.qrCodeData = qrData;
-            scannedData.barcodeData = barcodeData;
-
-            // Show QR Code and Barcode
-            displayQRCode();
-            displayBarcode();
-        }
-
-        // Simulate scanning QR and Barcode on page load
-        window.onload = generateQRCodeBarcode;
     </script>
 </body>
 </html>
