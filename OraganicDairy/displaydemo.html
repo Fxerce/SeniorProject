@@ -24,6 +24,7 @@
         const receivedData = {
             "PersonInCharge": "John Doe",
             "MilkTankNum": 12345,
+            "RawMilkID": "RM15236",
             "Quantity": 500,
             "QuantityUnit": "Liter",
             "Temperature": 4,
@@ -44,6 +45,7 @@
             tbody.innerHTML = `
                 <tr><td><strong>Person in Charge</strong></td><td>${data.PersonInCharge}</td></tr>
                 <tr><td><strong>Milk Tank Number</strong></td><td>${data.MilkTankNum}</td></tr>
+                <tr><td><strong>Raw Milk ID</strong></td><td>${data.RawMilkID}</td></tr>
                 <tr><td><strong>Quantity</strong></td><td>${data.Quantity} ${data.QuantityUnit}</td></tr>
                 <tr><td><strong>Temperature</strong></td><td>${data.Temperature} ${data.TemperatureUnit}</td></tr>
                 <tr><td><strong>pH</strong></td><td>${data.MainQualityRM3}</td></tr>
