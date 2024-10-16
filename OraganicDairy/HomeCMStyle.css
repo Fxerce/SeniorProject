@@ -54,9 +54,6 @@ body {
     margin-left: 5px;
 }
 
-.nav-links:hover{
-    color: red;
-}
 .nav-links li {
     font-size: 38px;
 }

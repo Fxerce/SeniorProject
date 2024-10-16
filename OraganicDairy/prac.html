@@ -7,6 +7,45 @@
     <link rel="stylesheet" href="prac.css">
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="brand">
+                    <h1 class="Purely">Purely</h1>
+                    <h1 class="Trace">Trace</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">General Information</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Product</a>
+                        <div class="dropdown-content">
+                            <a href="#">Receive Raw Milk</a>
+                            <a href="#">Create Product</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Product Lot</a>
+                        <div class="dropdown-content">
+                            <a href="#">Create Product Lot</a>
+                            <a href="#">Manage Product Lot</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">More</a>
+                        <div class="dropdown-content">
+                            <a href="#">Profile</a>
+                            <a href="#">Setting</a>
+                            <a href="#">Log Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="section">
+        <button>Receive Raw Milk</button>
+        <button>Create Product</button>
+    </div>
     <h1>Create Product</h1>
     <form id="ProductForm" action="/submit" method="POST">
     <div class="form-container">
