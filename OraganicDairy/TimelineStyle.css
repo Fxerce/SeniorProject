@@ -7,9 +7,8 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   background-image: url('https://i.pinimg.com/736x/78/c5/19/78c519fd9ab35472f094b0b6e2522ff4.jpg'); /* ใส่ลิงก์หรือชื่อไฟล์ภาพ */
-  background-size: cover; /* ให้ภาพครอบคลุมทั้งหน้าจอ */
-  background-position: center; /* ตำแหน่งภาพอยู่ตรงกลาง */
-  background-attachment: fixed; /* ทำให้ภาพอยู่คงที่ขณะเลื่อนหน้าเว็บ */
+  background-size: auto;/* ให้ภาพครอบคลุมทั้งหน้าจอ */
+  background-position: top center; /* ตำแหน่งภาพอยู่ตรงกลาง */ /* ทำให้ภาพอยู่คงที่ขณะเลื่อนหน้าเว็บ */
   background-repeat: no-repeat; /* ไม่ให้ภาพซ้ำ */
   color: #333;
 }
