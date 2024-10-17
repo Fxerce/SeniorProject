@@ -5,6 +5,7 @@
 
 /* Navbar */
 .navbar {
+  background-color: white;
   padding: 10px 20px;
   border-bottom: 1px solid #ddd;
   height: 100px;
