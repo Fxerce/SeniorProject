@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Address</title>
+    <link rel="stylesheet" href="ShippingAddressRMStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> <!--Link cdn Icon-->
+    <link rel="stylesheet" href="navbarFarmStyle.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <h1>Shipping Address</h1>
+    <form id="milkForm" action="/submit" method="POST">
+    <div class="form-container">
+        <div class="left-container">
+            <div class="container-l1">
+                <label class="boldLabel" for="Factoryname" style="font-size: 2.5rem;">Factory Name</label>
+                <input type="text" id="Factoryname" name="Factoryname" placeholder="Enter delivery name" required>
+            </div>
+            <div class="container-l2">
+                <label class="boldLabel" for="Address" style="font-size: 2.5rem;">Address</label><br>
+                <input type="text" name="Address" id="Address" placeholder="Enter the shipping Address" required><br>
+                <label class="boldLabel" for="Location" style="font-size: 2.5rem;">Location</label>
+                        <div id="Gmap" style="height: 500px; width: 100%;"></div>
+                        <input type="url" name="LocationLink" id="LocationLink" placeholder="https://example.com/location" required>
+            </div>
+        </div>
+        <!--Right Container-->
+        <div class="right-container">
+            <div class="container-r1">
+                <label for="DeliveryDate">Delivery Date</label><br>
+                <input type="date" id="deliveryDate" name="deliveryDate" required>
+            </div>
+            <div class="container-r2">
+                <label for="NumofRMtank">Number of raw milk tanks</label>
+                <input type="number" name="NumofRM" id="NumofRM" placeholder="Enter the number of milk tanks" required>
+                <label for="TNforDel">Select Tank Numbers for Delivery</label>
+                <form id="tankForm">
+                    <label>Select Tank Numbers that have not been delivered:</label>
+                    <div id="tankList">
+                        <!--Checkbox options for tank numbers will be dynamically added here-->
+                    </div>
+                </form>
+                <p id="result"></p>
+            </div>
+        </div>
+    </div>
+    <input id="btn" type="submit" value="Submit">
+</form>
+
+    <!--Scipt for Nav Bar-->
+    <script>
+        // Load navbar.html content
+        fetch('navbarFarm.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+    </script>
+
+    <!--Script for calendar-->
+    <script>
+        document.getElementById("deliveryForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // ป้องกันการรีเฟรชหน้า
+    const deliveryDate = document.getElementById("deliveryDate").value;
+    
+    if (deliveryDate) {
+        document.getElementById("result").textContent = `You have selected ${deliveryDate} as the delivery date.`;
+    } else {
+        document.getElementById("result").textContent = "Please select a delivery date.";
+    }
+});
+    </script>
+<!--Script for Select tank number-->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const tankList = document.getElementById("tankList");
+
+        // ดึงข้อมูลจาก API เมื่อหน้าเว็บโหลด
+        fetch("https://your-server.com/api/tanks")
+            .then(response => response.json())
+            .then(data => {
+                const tankNumbers = data.tankNumbers; // ดึง tank numbers จากข้อมูลที่ได้จาก API
+
+                // สร้าง checkbox สำหรับ tank numbers
+                tankNumbers.forEach(function(tankNumber) {
+                    const label = document.createElement("label");
+                    const checkbox = document.createElement("input");
+
+                    checkbox.type = "checkbox";
+                    checkbox.value = tankNumber;
+                    checkbox.name = "tankNumber";
+
+                    label.appendChild(checkbox);
+                    label.appendChild(document.createTextNode(`Tank ${tankNumber}`));
+                    tankList.appendChild(label);
+                    tankList.appendChild(document.createElement("br"));
+                });
+
+                // เมื่อผู้ใช้กด submit ฟอร์ม
+                document.getElementById("tankForm").addEventListener("submit", function(event) {
+                    event.preventDefault(); // ป้องกันการรีเฟรชหน้า
+
+                    // เก็บค่าของ tank ที่ผู้ใช้เลือก
+                    const selectedTanks = Array.from(document.querySelectorAll('input[name="tankNumber"]:checked'))
+                                              .map(checkbox => checkbox.value);
+
+                    const deliveryDate = document.getElementById("deliveryDate").value;
+                    const resultElement = document.getElementById("result");
+
+                    // ตรวจสอบว่าเลือก tank number หรือไม่
+                    if (selectedTanks.length === 0) {
+                        resultElement.textContent = "Please select at least one tank.";
+                        resultElement.classList.add("error");  // เพิ่มคลาส .error เพื่อทำให้ข้อความเป็นสีแดง
+                    } else if (!deliveryDate) {
+                        resultElement.textContent = "Please select a delivery date.";
+                        resultElement.classList.add("error");  // เพิ่มคลาส .error
+                    } else {
+                        resultElement.textContent = `You selected tanks: ${selectedTanks.join(", ")} to be delivered on ${deliveryDate}.`;
+                        resultElement.classList.remove("error");  // ลบคลาส .error หากทุกอย่างถูกต้อง
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching tank numbers:', error);
+                tankList.textContent = "Unable to load tank numbers.";
+                tankList.classList.add("error");
+            });
+    });
+</script>
+
+<!--Script for Google Map part-->
+<script>
+    let Gmap;
+    let marker;
+
+    function initMap() {
+    Gmap = new google.maps.Map(document.getElementById("Gmap"), {
+        center: { lat: 13.7563, lng: 100.5018 },
+        zoom: 10,
+    });
+
+    Gmap.addListener("click", (event) => {
+        placeMarker(event.latLng);
+        updateCoordinates(event.latLng);
+    });
+}
+
+function placeMarker(location) {
+    if (marker) {
+        marker.setMap(null); // remove old marker
+    }
+
+    marker = new google.maps.Marker({ // set new marker
+        position: location,
+        map: Gmap,
+    });
+}
+
+function updateCoordinates(location) {
+    const lat = location.lat();
+    const lng = location.lng();
+    document.getElementById("coordinates").innerText = `Latitude: ${lat}, Longitude: ${lng}`;
+    document.getElementById("LocationLink").value = `https://maps.google.com/?q=${lat},${lng}`; // Update input with Google Maps link
+}
+
+document.getElementById("LocationLink").addEventListener("change", function() {
+    const url = this.value;
+    const latLng = getLatLngFromURL(url);
+    if (latLng) {
+        placeMarker(latLng);
+        Gmap.setCenter(latLng);
+        updateCoordinates(latLng);
+    }
+});
+
+function getLatLngFromURL(url) {
+const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+const match = url.match(regex);
+if (match) {
+    const lat = parseFloat(match[1]);
+    const lng = parseFloat(match[2]);
+    return { lat, lng };
+}
+return null;
+}
+</script>
+
+<!--Script for API Google Map-->
+<script async defer 
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4l6cSn6f3m4FLynCgDAvGN12rwgl4LvU&callback=initMap">
+
+</script>
+</body>
+</html>

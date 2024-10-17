@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+body {
+    font-family: 'quicksand';
+    background-color: #FEFDED;
+  }
+  
+  h1 {
+      font-size: 60px;
+      margin-left: 20px;
+      color: #184d47;
+    }
+  
+  .form-container{
+      display: flex; 
+    justify-content: space-between; /* Ensures space is distributed evenly */
+    margin-left: 40px;
+    margin-right: 40px;
+    align-items: stretch;
+  }
+  
+  .left-container, .right-container{
+      border-radius: 50px;
+      width: 48%;
+      padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+    background-color: #C6EBC5;
+  }
+  
+  
+  label{
+      font-weight: bolder;
+      font-size: 2rem;
+      line-height: 2;
+      color: #674747; /*not change*/
+  }
+  
+  input[type="text"]{
+      font-family: 'quicksand';
+      font-size: 16px;
+      display: inline-block;
+      border-radius: 20px;
+      width: 30%;
+      height: 30px;
+      border-color: #4A4A44;
+      background-color: #F5F5F5;
+      color: #5C4033;
+      font-weight: bold;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 10px;
+    }
+  
+  
+  /*Left-container*/
+  
+  input[type="number"] {
+      font-family: 'quicksand';
+      font-size: 16px;
+      display: inline-block;
+      border-radius: 20px;
+      border-color: #4A4A44;
+      width: 30%;
+      height: 30px;
+      background-color: #F5F5F5;
+      color: #5C4033;
+      font-weight: bold;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 10px;
+  
+  }
+  
+  input[type="url"] {
+      font-family: 'quicksand';
+      font-size: 16px;
+      display: inline-block;
+      border-radius: 20px;
+      width: 45%;
+      height: 30px;
+      border-color: #4A4A44;
+      background-color: #F5F5F5;
+      color: #5C4033;
+      font-weight: bold;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 10px;
+  }
+  
+  input[type="checkbox"]{
+      display: inline-block;
+      width: 20px; 
+      height: 20px;
+      cursor: pointer; /* แสดงว่าเป็น clickable */
+      margin-right: 10px; /* ช่องว่างระหว่าง checkbox กับ label */
+      vertical-align: middle; /* จัดแนวในแนวตั้ง */
+      margin-bottom: 10px;
+  }
+
+  input[type="date"] {
+    font-size: 18px;
+    font-family: 'Itim', cursive;
+    font-weight: bold;
+    padding: 8px;
+    width: 90%;
+    border-color: #4A4A44;
+    background-color: #F5F5F5;
+    color: #5C4033;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#Gmap{
+    margin-bottom: 20px;
+}
+
+#result{
+    margin-top: 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+.error{
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#btn{
+    font-family: 'quicksand';
+    font-size: 22px;
+    font-weight: bolder;
+    width: 180px;
+    height: 80px;
+    border-radius: 100px;
+    border: none;
+    background-color:  #A6CF98;
+    color: #5C4033;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    margin-top: 30px;
+    display: block; /* ทำให้ปุ่มเป็น block */
+    margin-left: auto; /* จัดกลางในแนวนอน */
+    margin-right: auto; /* จัดกลางในแนวนอน */
+}
+
+#btn:hover{
+    background-color: #5AA469;
+    color: white;
+}

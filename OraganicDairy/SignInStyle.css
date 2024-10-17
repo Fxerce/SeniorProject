@@ -23,9 +23,9 @@ body, html {
 /* Container ที่ครอบทั้งหน้า */
 .container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     height: 100%;
+    align-items: center;
     padding-left: 15%;
     padding-right: 10%;
 }
@@ -62,13 +62,13 @@ body, html {
 }
 
 .form-container {
-    position: relative;
-    width: 400px;
-    height: 480px;
+    width: 600px;
+    height: 800px;
     padding: 40px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     background-color: white;
+    text-align: center;
 }
 
 .tabs {
@@ -80,11 +80,13 @@ body, html {
 
 .tabs a {
     text-decoration: none;
-    padding: 10px 20px;
+    text-align: center;
     color: #888;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+    padding-bottom: 5px;
+    flex-grow: 1;
 }
 
 .tabs .active {
@@ -98,30 +100,32 @@ body, html {
 
 .input-group label {
     display: block;
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 5px;
 }
 
 .input-group input {
+    height: 60px;
     width: 100%;
     padding: 12px;
+    margin-top: 20px;
     border: 1px solid #ddd;
     border-radius: 100px;
-    gap: 8px;
-    font-size: 16px;
+    gap: 10px;
+    font-size: 18px;
     font-family: "DM Sans", sans-serif;
 }
 
 .btn {
-    justify-items: center;
-    position: fixed;
+    text-align: center;
+    height: 60px;
     width: 320px;
     padding: 12px;
     border-radius: 100px;
     background-color: #333;
     color: white;
     border: none;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     font-family: "DM Sans", sans-serif;
 }
@@ -131,5 +135,9 @@ body, html {
 }
 
 #signinBtn {
-    margin-top: 3.5%;
+    margin-top: 300px;
+}
+
+#signupBtn{
+    margin-top: 200px;
 }
