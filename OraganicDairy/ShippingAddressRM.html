@@ -30,7 +30,27 @@
         <div class="right-container">
             <div class="container-r1">
                 <label for="DeliveryDate">Delivery Date</label><br>
-                <input type="date" id="deliveryDate" name="deliveryDate" required>
+                <div class="calendar">
+                    <div class="header">
+                        <button id="prevBtn">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <div class="monthYear" id="monthYear"></div>
+                        <button id="nextBtn">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="days">
+                        <div class="day">Mon</div>
+                        <div class="day">Tue</div>
+                        <div class="day">Wed</div>
+                        <div class="day">Thu</div>
+                        <div class="day">Fri</div>
+                        <div class="day">Sat</div>
+                        <div class="day">Sun</div>
+                    </div>
+                    <div class="dates" id="dates"></div>
+                </div>
             </div>
             <div class="container-r2">
                 <label for="NumofRMtank">Number of raw milk tanks</label>
@@ -61,16 +81,95 @@
 
     <!--Script for calendar-->
     <script>
-        document.getElementById("deliveryForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // ป้องกันการรีเฟรชหน้า
-    const deliveryDate = document.getElementById("deliveryDate").value;
-    
-    if (deliveryDate) {
-        document.getElementById("result").textContent = `You have selected ${deliveryDate} as the delivery date.`;
-    } else {
-        document.getElementById("result").textContent = "Please select a delivery date.";
-    }
-});
+        const monthYearElement = document.getElementById('monthYear');
+        const datesElement = document.getElementById('dates');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentDate = new Date();
+        let selectedDate = null; // Variable to store the selected date
+        let today = new Date();  // Store today's date
+
+        const updateCalendar = () => {
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth();
+
+            const firstDay = new Date(currentYear, currentMonth, 1); // First day of the month
+            const lastDay = new Date(currentYear, currentMonth + 1, 0); // Last day of the month
+            const totalDays = lastDay.getDate();
+            const firstDayIndex = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1; // Adjust for Monday start
+            const lastDayIndex = lastDay.getDay() === 0 ? 6 : lastDay.getDay() - 1; // Adjust for Monday start
+
+            const monthYearString = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+            monthYearElement.textContent = monthYearString;
+
+            let datesHTML = ''; // HTML content for the dates
+
+            // Add inactive days from the previous month
+            for (let i = firstDayIndex; i > 0; i--) {
+                const prevDate = new Date(currentYear, currentMonth, -i + 1);
+                datesHTML += `<div class="date inactive">${prevDate.getDate()}</div>`;
+            }
+
+            // Add active days for the current month
+            for (let i = 1; i <= totalDays; i++) {
+                const date = new Date(currentYear, currentMonth, i);
+                
+                // Check if this is today
+                const isToday = date.toDateString() === today.toDateString();
+                const isSelected = selectedDate && selectedDate.toDateString() === date.toDateString();
+                
+                const dayClass = isToday ? 'current-day' : isSelected ? 'active' : '';
+                
+                datesHTML += `<div class="date ${dayClass}" data-date="${date}">${i}</div>`;
+            }
+
+            // Add inactive days for the next month
+            for (let i = 1; i <= 6 - lastDayIndex; i++) {
+                const nextDate = new Date(currentYear, currentMonth + 1, i);
+                datesHTML += `<div class="date inactive">${nextDate.getDate()}</div>`;
+            }
+
+            // Set the HTML content of the dates container
+            datesElement.innerHTML = datesHTML;
+
+            // Add event listeners to the new dates
+            const dateElements = document.querySelectorAll('.date:not(.inactive)');
+            dateElements.forEach(dateElement => {
+                dateElement.addEventListener('click', (e) => {
+                    selectDate(e.target);
+                });
+            });
+        };
+
+        const selectDate = (element) => {
+            // Clear previously selected date
+            const previousActive = document.querySelector('.date.active');
+            if (previousActive) previousActive.classList.remove('active');
+
+            // Set new active date
+            element.classList.add('active');
+            selectedDate = new Date(element.getAttribute('data-date')); // Store the selected date
+
+            // Reapply the current day class to today, if it's not selected
+            const todayElement = document.querySelector(`.date[data-date="${today.toDateString()}"]`);
+            if (todayElement && todayElement !== element) {
+                todayElement.classList.add('current-day');
+            }
+        };
+
+        prevBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            updateCalendar();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            updateCalendar();
+        });
+
+        // Initialize the calendar
+        updateCalendar();
     </script>
 <!--Script for Select tank number-->
 <script>
@@ -192,5 +291,64 @@ return null;
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4l6cSn6f3m4FLynCgDAvGN12rwgl4LvU&callback=initMap">
 
 </script>
+
+<!--Script for sending data-->
+<script>
+    document.getElementById('milkForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // ป้องกันการรีเฟรชหน้า
+
+        // เก็บข้อมูลจากฟอร์ม
+        const factoryName = document.getElementById('Factoryname').value;
+        const address = document.getElementById('Address').value;
+        const locationLink = document.getElementById('LocationLink').value;
+        const numOfRM = document.getElementById('NumofRM').value;
+
+        // เก็บวันที่ที่เลือกจากปฏิทิน
+        const deliveryDate = selectedDate ? selectedDate.toISOString().split('T')[0] : null;
+
+        // เก็บ Tank ที่ผู้ใช้เลือก
+        const selectedTanks = Array.from(document.querySelectorAll('input[name="tankNumber"]:checked'))
+            .map(checkbox => checkbox.value);
+
+        // ตรวจสอบว่าผู้ใช้ได้กรอกข้อมูลครบหรือไม่
+        if (!factoryName || !address || !locationLink || !numOfRM || !deliveryDate || selectedTanks.length === 0) {
+            alert('Please fill out all required fields and select a delivery date and tanks.');
+            return;
+        }
+
+        // สร้างออบเจ็กต์สำหรับข้อมูลที่ต้องส่ง
+        const formData = {
+            factoryName: factoryName,
+            address: address,
+            locationLink: locationLink,
+            numOfRM: numOfRM,
+            deliveryDate: deliveryDate,
+            selectedTanks: selectedTanks
+        };
+
+        // ส่งข้อมูลไปยัง backend ด้วย fetch
+        fetch('/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Form submitted successfully!');
+                // ล้างฟอร์มหรือดำเนินการเพิ่มเติมที่ต้องการ
+            } else {
+                alert('Error submitting the form.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while submitting the form.');
+        });
+    });
+</script>
+
 </body>
 </html>
