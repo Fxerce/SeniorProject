@@ -5,8 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timeline Infographic with Steps</title>
     <link rel="stylesheet" href="TimelineStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> <!--Link cdn Icon-->
 </head>
 <body>
+        <!-- Navigation -->
+        <header>
+            <nav class="navbar">
+                <div class="container">
+                    <div class="brand">
+                        <h1 class="Purely" style="font-size: 96px;">Purely</h1>
+                        <h1 class="Trace" style="font-size: 96px;">Trace</h1>
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="SignIn.html?tab=signin">Sign In</a></li>
+                        <li>|</li>
+                        <li><a href="SignIn.html?tab=signup">Sign Up</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
     <div class="timeline-container">
         <h1>A Short Guide to Dairy Product Traceability</h1>
@@ -55,10 +72,18 @@
             <div class="Description">
                 <h3 style="margin-right: 5px;">Step 4</h3>
                 <p>|</p>
-                <p style="margin-left: 5px;">เCustomer</p>
+                <p style="margin-left: 5px;">Customer</p>
             </div>
         </div>
     </div>
-
+<!--Scipt for Nav Bar-->
+<script>
+    // Load navbar.html content
+    fetch('navbarFarm.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+        });
+</script>
 </body>
 </html>
