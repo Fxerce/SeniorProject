@@ -32,7 +32,7 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('resultsContainer').innerHTML = '<p>Error retrieving search results.</p>';
+                document.getElementById('resultsContainer').innerHTML = '<p style="color: red; font-weight: bold; font-size: 25px">Error retrieving search results.</p>';
             });
         }
 
@@ -42,7 +42,7 @@
             resultsContainer.innerHTML = ''; // ล้างข้อมูลเดิม
 
             if (results.length === 0) {
-                resultsContainer.innerHTML = '<p>No results found.</p>';
+                resultsContainer.innerHTML = '<p style="color: red; font-weight: bold; font-size: 25px">No results found.</p>';
                 return;
             }
 

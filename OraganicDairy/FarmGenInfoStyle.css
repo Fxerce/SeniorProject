@@ -1,34 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
 body {
   font-family: 'quicksand';
   background-color: #FEFDED;
 }
-
-h1 {
-    font-size: 60px;
-    margin-left: 20px;
-    color: #184d47;
-  }
-
-.form-container{
+.form-section{
+    justify-content: center;
     display: flex; 
-  justify-content: space-between; /* Ensures space is distributed evenly */
-  margin-left: 40px;
-  margin-right: 40px;
-  align-items: stretch;
-}
-
-.left-container, .right-container{
+    margin: 40px auto; /* Centers horizontally and adds margin at the top */
+    margin-top: 50px;
+    align-items: stretch;
     border-radius: 50px;
-    width: 48%;
+    max-width: 90%; /* Set a maximum width to prevent it from getting too wide */
     padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  box-sizing: border-box;
-  background-color: #C6EBC5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+    background-color: #C6EBC5;
 }
-
-
 label{
     font-weight: bolder;
     font-size: 2rem;
@@ -41,8 +32,8 @@ input[type="text"]{
     font-size: 18px;
     display: inline-block;
     border-radius: 20px;
-    width: 30%;
-    height: 30px;
+    width: 90%;
+    height: 40px;
     border-color: #4A4A44;
     background-color: #F5F5F5;
     color: #5C4033;
@@ -52,66 +43,47 @@ input[type="text"]{
     margin-left: 10px;
   }
 
-
-/*Left-container*/
-
-input[type="number"] {
-    font-family: 'quicksand';
-    font-size: 18px;
-    display: inline-block;
-    border-radius: 20px;
-    border-color: #4A4A44;
-    width: 30%;
-    height: 30px;
-    background-color: #F5F5F5;
-    color: #5C4033;
-    font-weight: bold;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 10px;
-
-}
-
-input[type="url"] {
-    font-family: 'quicksand';
-    font-size: 18px;
-    display: inline-block;
-    border-radius: 20px;
-    width: 45%;
-    height: 30px;
-    border-color: #4A4A44;
-    background-color: #F5F5F5;
-    color: #5C4033;
-    font-weight: bold;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 10px;
-}
-
-input[type="checkbox"]{
-    display: inline-block;
-    width: 20px; 
-    height: 20px;
-    cursor: pointer; /* แสดงว่าเป็น clickable */
-    margin-right: 10px; /* ช่องว่างระหว่าง checkbox กับ label */
-    vertical-align: middle; /* จัดแนวในแนวตั้ง */
-    margin-bottom: 10px;
-}
-
-
-.sub-Text, .sub-checkboxes{
-    display: none; /*hide sub-element */
-    margin-left: 20px;
-    border: 20px;
-    
-  }
-
-select{
+  input[type="tel"] {
     font-family: 'quicksand';
     font-size: 16px;
+    display: inline-block;
+    border-radius: 20px;
+    border-color: #4A4A44;
+    width: 100%;
+    height: 40px;
+    background-color: #F5F5F5;
+    color: #5C4033;
     font-weight: bold;
-    width: 85px;
-    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+
+}
+
+input[type="url"]{
+    font-family: 'quicksand';
+    font-size: 18px;
+    display: inline-block;
+    border-radius: 20px;
+    width: 90%;
+    height: 40px;
+    border-color: #4A4A44;
+    background-color: #F5F5F5;
+    color: #5C4033;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+  }
+i{
+    margin-right: 10px;
+}
+select{
+    font-family: 'quicksand';
+    font-size: 18px;
+    font-weight: bold;
+    width: 60%;
+    height: 35px;
     background-color: #FA7070;
     color: #FFF2F2;
     border-radius: 20px;
@@ -129,12 +101,28 @@ option{
     background-color: #E6BAA3;
 }
 
-/*Right-container*/
-#LocationLink{
-    margin-top: 20px;
+.containerRow {
+    display: grid;                         /* ใช้ grid layout */
+    grid-template-columns: 1fr 1fr;       /* กำหนดให้มีสองคอลัมน์ */
+    gap: 100px;                             /* ระยะห่างระหว่างคอลัมน์ */
+    width: 100%;                           /* ให้ความกว้างเต็มพื้นที่ */
+    margin: 10px 0;                       /* ระยะห่างระหว่างแถว */
 }
 
-#btn{
+.form-group {
+    display: flex;                         /* ใช้ flexbox ภายในกลุ่ม */
+    flex-direction: column;                /* จัดเรียง label และ select เป็นแนวตั้ง */
+}
+
+
+.form-group:last-child {
+    margin-right: 0; /* ไม่ต้องมีระยะห่างที่กลุ่มสุดท้าย */
+}
+
+
+
+
+.btn{
     font-family: 'quicksand';
     font-size: 22px;
     font-weight: bolder;
@@ -152,7 +140,7 @@ option{
     margin-right: auto; /* จัดกลางในแนวนอน */
 }
 
-#btn:hover{
+.btn:hover{
     background-color: #5AA469;
     color: white;
 }

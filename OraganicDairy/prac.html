@@ -3,74 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Page</title>
+    <title>Company Information Form</title>
     <link rel="stylesheet" href="prac.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> <!--Link cdn Icon-->
-
 </head>
 <body>
-    <h1>Search the System</h1>
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Enter your search term">
-        <i class="fa-solid fa-magnifying-glass" id="iconsearch"></i>
-    </div>
-    <div id="resultsContainer"></div>
+    <header>
+        <h1>Purely Trace</h1>
+        <nav>
+            <ul>
+                <li><a href="#">General Information</a></li>
+                <li><a href="#">Raw Milk</a></li>
+                <li><a href="#">Shipping</a></li>
+            </ul>
+            <div class="menu-icon">
+                <span>☰</span>
+            </div>
+        </nav>
+    </header>
 
-    <script>
-        // ฟังก์ชันสำหรับเรียก API เพื่อค้นหาข้อมูล
-        function searchSystem(query) {
-            // ตัวอย่างการใช้ fetch API เพื่อเรียก backend
-            fetch(`/search?query=${encodeURIComponent(query)}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                displayResults(data.results);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('resultsContainer').innerHTML = '<p>Error retrieving search results.</p>';
-            });
-        }
+    <section class="form-section">
+        <form>
+            <div class="form-group">
+                <label for="company-name">Company Name / Entrepreneur Name</label>
+                <input type="text" id="company-name" placeholder="Enter company name">
+            </div>
 
-        // ฟังก์ชันสำหรับแสดงผลลัพธ์การค้นหา
-        function displayResults(results) {
-            const resultsContainer = document.getElementById('resultsContainer');
-            resultsContainer.innerHTML = ''; // ล้างข้อมูลเดิม
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Name - Surname</label>
+                    <input type="text" id="name" placeholder="Enter name">
+                </div>
 
-            if (results.length === 0) {
-                resultsContainer.innerHTML = '<p>No results found.</p>';
-                return;
-            }
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country">
+                        <option>Country</option>
+                        <!-- Add countries here -->
+                    </select>
+                </div>
 
-            // สร้างผลลัพธ์เป็นรายการ
-            const ul = document.createElement('ul');
-            results.forEach(result => {
-                const li = document.createElement('li');
-                li.textContent = result;  // สามารถปรับแต่งให้แสดงรายละเอียดมากกว่านี้ได้ตามความต้องการ
-                ul.appendChild(li);
-            });
-            resultsContainer.appendChild(ul);
-        }
+                <div class="form-group">
+                    <label for="province">Province</label>
+                    <select id="province">
+                        <option>Province</option>
+                        <!-- Add provinces here -->
+                    </select>
+                </div>
+            </div>
 
-        // เมื่อกด Enter บนคีย์บอร์ดในช่อง input
-        document.getElementById('searchInput').addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault(); // ป้องกันการส่งฟอร์มแบบปกติ
-                const searchTerm = document.getElementById('searchInput').value.trim();
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tel">Tel</label>
+                    <input type="tel" id="tel" placeholder="Enter telephone">
+                </div>
 
-                if (!searchTerm) {
-                    alert('Please enter a search term');
-                    return;
-                }
+                <div class="form-group">
+                    <label for="fax">Fax</label>
+                    <input type="text" id="fax" placeholder="Enter fax">
+                </div>
+            </div>
 
-                // เรียกใช้ฟังก์ชันค้นหา
-                searchSystem(searchTerm);
-            }
-        });
-    </script>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="line-id">Line ID</label>
+                    <input type="text" id="line-id" placeholder="Enter Line ID">
+                </div>
+
+                <div class="form-group">
+                    <label for="facebook">Facebook</label>
+                    <input type="text" id="facebook" placeholder="Enter Facebook link">
+                </div>
+            </div>
+
+            <div class="form-group">
+                
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location (Google Maps)</label>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8307080739294!2d-122.41941548467997!3d37.77902697975809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c7e8a2b65%3A0x40b82a53a255a47!2sCivic%20Center%2C%20San%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1636709252141!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="save-button">Saved</button>
+            </div>
+        </form>
+    </section>
 </body>
 </html>

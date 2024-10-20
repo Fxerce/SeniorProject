@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm General Information Form</title>
+    <link rel="stylesheet" href="FarmGenInfoStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> <!--Link cdn Icon-->
+    <link rel="stylesheet" href="navbarFarmStyle.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <section class="form-section">
+        <form>
+                <label for="company-name">Company Name/ Entrepreneur Name</label>
+                <input type="text" id="company-name" placeholder="Enter company name" required>
+                <label for="name">Name - Surname</label><br>
+                <input type="text" id="name" placeholder="Enter name-surname" required>
+            <div class="form-group">
+                <label for="province">Province</label>
+                <select id="province" required>
+                    <option> Select Province</option>
+                    <option value="Bangkok">Bangkok</option>
+        <option value="Chiang Mai">Chiang Mai</option>
+        <option value="Chiang Rai">Chiang Rai</option>
+        <option value="Chonburi">Chonburi</option>
+        <option value="Kalasin">Kalasin</option>
+        <option value="Kamphaeng Phet">Kamphaeng Phet</option>
+        <option value="Kanchanaburi">Kanchanaburi</option>
+        <option value="Khon Kaen">Khon Kaen</option>
+        <option value="Lampang">Lampang</option>
+        <option value="Lamphun">Lamphun</option>
+        <option value="Loei">Loei</option>
+        <option value="Nakhon Nayok">Nakhon Nayok</option>
+        <option value="Nakhon Pathom">Nakhon Pathom</option>
+        <option value="Nakhon Ratchasima">Nakhon Ratchasima</option>
+        <option value="Nakhon Sawan">Nakhon Sawan</option>
+        <option value="Nakhon Si Thammarat">Nakhon Si Thammarat</option>
+        <option value="Nan">Nan</option>
+        <option value="Pattani">Pattani</option>
+        <option value="Phang Nga">Phang Nga</option>
+        <option value="Phatthalung">Phatthalung</option>
+        <option value="Phayao">Phayao</option>
+        <option value="Phichit">Phichit</option>
+        <option value="Phitsanulok">Phitsanulok</option>
+        <option value="Prachin Buri">Prachin Buri</option>
+        <option value="Prachuap Khiri Khan">Prachuap Khiri Khan</option>
+        <option value="Ranong">Ranong</option>
+        <option value="Ratchaburi">Ratchaburi</option>
+        <option value="Rayong">Rayong</option>
+        <option value="Roi Et">Roi Et</option>
+        <option value="Sa Kaeo">Sa Kaeo</option>
+        <option value="Samut Prakan">Samut Prakan</option>
+        <option value="Samut Sakhon">Samut Sakhon</option>
+        <option value="Samui">Samui</option>
+        <option value="Saraburi">Saraburi</option>
+        <option value="Satun">Satun</option>
+        <option value="Sing Buri">Sing Buri</option>
+        <option value="Sukhothai">Sukhothai</option>
+        <option value="Suphan Buri">Suphan Buri</option>
+        <option value="Surat Thani">Surat Thani</option>
+        <option value="Tak">Tak</option>
+        <option value="Trang">Trang</option>
+        <option value="Ubon Ratchathani">Ubon Ratchathani</option>
+        <option value="Udon Thani">Udon Thani</option>
+        <option value="Uthai Thani">Uthai Thani</option>
+        <option value="Yala">Yala</option>
+        <option value="Yasothon">Yasothon</option>
+                </select>
+                
+            </div>
+            <div class="form-group">
+                <label for="county">County</label>
+                <select id="county" required>
+                    <option>Select County</option>
+                </select>
+            </div>
+            <div class="containerRow">
+                <div class="form-group">
+                    <label for="tel"><i class="fa-solid fa-phone"></i>Tel:</label><br>
+                    <input type="tel" id="tel" placeholder="Enter telephone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fax">Fax</label>
+                    <input type="text" id="fax" placeholder="Enter Fax">
+                </div>
+            </div>
+                <div class="containerRow">
+                    <div class="form-group">
+                        <label for="line-id"><i class="fa-brands fa-line"></i>Line ID</label>
+                        <input type="text" id="line-id" placeholder="Enter Line ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="facebook"><i class="fa-brands fa-facebook"></i>Facebook</label>
+                        <input type="url" id="facebook" placeholder="Enter Facebook link">
+                    </div>
+                </div>
+                <div class="containerRow">
+                    <div class="form-group">
+                        <label for="Email"><i class="fa-solid fa-at"></i>Email</label>
+                        <input type="text" id="Email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Website"><i class="fa-solid fa-link"></i>Website</label>
+                        <input type="url" id="Website" placeholder="Enter your website">
+                    </div>
+                </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" placeholder="Enter your address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location (Google Maps)</label>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8307080739294!2d-122.41941548467997!3d37.77902697975809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c7e8a2b65%3A0x40b82a53a255a47!2sCivic%20Center%2C%20San%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1636709252141!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div> 
+            </div>
+            <div>
+                <button type="submit" class="btn">Saved</button>
+            </div>
+        </form>
+    </section>
+    <!--Scipt for Nav Bar-->
+    <script>
+        // Load navbar.html content
+        fetch('navbarFarm.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+    </script>
+
+<!--Script จังหวัดและเขตในไทย-->
+    <script>
+        // ข้อมูลจังหวัดและเขต
+        const data = {
+    "Ang Thong": ["Mueang Ang Thong", "Pa Mok", "Pho Thong", "Sawaeng Ha", "Wiset Chai Chan", "Samko"],
+    "Ayutthaya": ["Bang Ban", "Bang Pahan", "Bang Pa-in", "Bang Sai", "Nakhon Luang", "Phak Hai", "Phra Nakhon Si Ayutthaya", "Tha Ruea", "Ban Phraek"],
+    "Bangkok": ["Bang Kapi", "Bang Na", "Bang Rak", "Chatuchak", "Din Daeng", "Dusit", "Huai Khwang", "Lat Phrao", "Min Buri", "Pathum Wan", "Phaya Thai", "Phra Nakhon", "Ratchathewi", "Sai Mai", "Suan Luang", "Thon Buri", "Taling Chan", "Watthana", "Yannawa"],
+    "Chanthaburi": ["Khlung", "Laem Sing", "Makham", "Mueang Chanthaburi", "Na Yai Am", "Pong Nam Ron", "So Phisai", "Tha Mai"],
+    "Chiang Mai": ["Chom Thong", "Doi Saket", "Hang Dong", "Hot", "Mae Rim", "Mae Taeng", "Mueang Chiang Mai", "San Kamphaeng", "San Sai", "Saraphi"],
+    "Chiang Rai": ["Chiang Khong", "Mae Chan", "Mae Sai", "Mueang Chiang Rai", "Phan", "Thoen", "Wiang Chai", "Wiang Pa Pao", "Mae Fa Luang"],
+    "Chon Buri": ["Ban Bueng", "Bang Lamung", "Ko Sichang", "Mueang Chon Buri", "Nong Yai", "Phanat Nikhom", "Phan Thong", "Sattahip", "Si Racha"],
+    "Kanchanaburi": ["Bo Phloi", "Lao Khwan", "Mueang Kanchanaburi", "Phanom Thuan", "Sai Yok", "Sangkhla Buri", "Thong Pha Phum"],
+    "Khon Kaen": ["Ban Phai", "Chum Phae", "Kranuan", "Mueang Khon Kaen", "Nam Phong", "Mancha Khiri", "Phon", "Pueai Noi", "Wiang Kao"],
+    "Krabi": ["Ao Luek", "Khao Phanom", "Ko Lanta", "Khlong Thom", "Lam Thap", "Mueang Krabi", "Plai Phraya"],
+    "Lampang": ["Chae Hom", "Hang Chat", "Ko Kha", "Mueang Lampang", "Mae Mo", "Ngao", "Sop Prap", "Thoen"],
+    "Loei": ["Chiang Khan", "Dan Sai", "Mueang Loei", "Na Haeo", "Phu Kradueng", "Phu Ruea", "Pha Khao", "Tha Li", "Wang Saphung"],
+    "Lopburi": ["Ban Mi", "Chai Badan", "Khok Samrong", "Mueang Lopburi", "Phatthana Nikhom", "Sa Bot", "Tha Wung"],
+    "Nakhon Pathom": ["Bang Len", "Don Tum", "Kamphaeng Saen", "Mueang Nakhon Pathom", "Nakhon Chai Si", "Phutthamonthon"],
+    "Nakhon Ratchasima": ["Chok Chai", "Dan Khun Thot", "Kham Thale So", "Khon Buri", "Mueang Nakhon Ratchasima", "Non Sung", "Non Thai", "Pak Chong", "Phimai", "Sung Noen"],
+    "Nakhon Sawan": ["Banphot Phisai", "Chum Saeng", "Krok Phra", "Lat Yao", "Mae Poen", "Mueang Nakhon Sawan", "Nong Bua", "Phayuha Khiri", "Takhli"],
+    "Nakhon Si Thammarat": ["Cha-uat", "Khiri Rat Nikhom", "Lan Saka", "Mueang Nakhon Si Thammarat", "Pak Phanang", "Phrom Khiri", "Ron Phibun", "Sichon", "Thung Song", "Tha Sala"],
+    "Nan": ["Ban Luang", "Bo Kluea", "Mueang Nan", "Na Muen", "Na Noi", "Pua", "Santisuk", "Tha Wang Pha", "Wiang Sa"],
+    "Narathiwat": ["Bacho", "Cho-airong", "Koh Khao", "Mueang Narathiwat", "Rangae", "Sungai Padi", "Tak Bai", "Waeng", "Yi-ngo", "Si Sakhon"],
+    "Nonthaburi": ["Bang Bua Thong", "Bang Kruai", "Bang Yai", "Mueang Nonthaburi", "Pak Kret", "Sai Noi"],
+    "Pathum Thani": ["Khlong Luang", "Lam Luk Ka", "Lat Lum Kaeo", "Mueang Pathum Thani", "Nong Suea", "Sam Khok", "Thanyaburi"],
+    "Pattani": ["Ban Kaeng", "Kapho", "Mai Kaen", "Mueang Pattani", "Panare", "Sai Buri", "Thung Yang Daeng", "Yarang", "Yaring"],
+    "Pattaya": ["Bang Lamung", "Huai Yai", "Na Kluea", "Nong Prue"],
+    "Phetchabun": ["Bueng Sam Phan", "Chon Daen", "Khao Kho", "Lom Kao", "Lom Sak", "Mueang Phetchabun", "Nong Phai", "Si Thep", "Wichian Buri"],
+    "Phetchaburi": ["Ban Laem", "Ban Lat", "Cha-am", "Khao Yoi", "Mueang Phetchaburi", "Nong Ya Plong", "Tha Yang"],
+    "Phuket": ["Kathu", "Mueang Phuket", "Thalang"],
+    "Phrae": ["Den Chai", "Long", "Mueang Phrae", "Rong Kwang", "Sung Men", "Wang Chin"],
+    "Rayong": ["Ban Chang", "Ban Khai", "Klaeng", "Mueang Rayong", "Nikhom Phatthana", "Pluak Daeng", "Wang Chan"],
+    "Ratchaburi": ["Ban Pong", "Bang Phae", "Chom Bueng", "Damnoen Saduak", "Mueang Ratchaburi", "Pak Tho", "Photharam", "Suan Phueng"],
+    "Samut Prakan": ["Bang Bo", "Bang Phli", "Bang Sao Thong", "Mueang Samut Prakan", "Phra Pradaeng", "Phra Samut Chedi"],
+    "Samut Sakhon": ["Ban Phaeo", "Krathum Baen", "Mueang Samut Sakhon"],
+    "Samut Songkhram": ["Amphawa", "Bang Khonthi", "Mueang Samut Songkhram"],
+    "Saraburi": ["Ban Mo", "Kaeng Khoi", "Mueang Saraburi", "Muak Lek", "Nong Khae", "Phra Phutthabat", "Wihan Daeng"],
+    "Sing Buri": ["Bang Rachan", "In Buri", "Khanu Woralaksaburi", "Mueang Sing Buri", "Phrom Buri"],
+    "Songkhla": ["Chana", "Hat Yai", "Khuan Niang", "Mueang Songkhla", "Panang", "Ranot", "Rattaphum", "Sadao", "Sathing Phra", "Thepha"],
+    "Suphan Buri": ["Bang Pla Ma", "Dan Chang", "Doem Bang Nang Buat", "Mueang Suphan Buri", "Sam Chuk", "Song Phi Nong", "U Thong"],
+    "Surat Thani": ["Ban Ta Khun", "Chaiya", "Don Sak", "Kanchanadit", "Khiri Rat Nikhom", "Ko Samui", "Mueang Surat Thani", "Phunphin", "Tha Chana"],
+    "Trat": ["Bo Rai", "Khao Saming", "Koh Chang", "Koh Kood", "Laem Ngop", "Mueang Trat"],
+    "Udon Thani": ["Ban Phue", "Kumphawapi", "Kut Chap", "Mueang Udon Thani", "Nong Han", "Nong Wua So", "Nam Som", "Phen", "Thung Fon"],
+    "Yala": ["Bannang Sata", "Betong", "Mueang Yala", "Raman", "Sungai Kolok", "Thung Yang Daeng", "Yarang"]
+};
+
+
+        // DOM elements
+        const provinceSelect = document.getElementById('province');
+        const countySelect = document.getElementById('county');
+
+        // ฟังก์ชันในการแสดงจังหวัดใน dropdown
+        function populateProvinces() {
+            for (let province in data) {
+                const option = document.createElement('option');
+                option.value = province;
+                option.textContent = province;
+                provinceSelect.appendChild(option);
+            }
+        }
+
+        // ฟังก์ชันในการแสดงเขตตามจังหวัดที่เลือก
+        function populateCounties(selectedProvince) {
+            countySelect.innerHTML = '<option value="">County</option>'; // ล้างค่าก่อนหน้า
+            let counties;
+
+            if (selectedProvince) {
+                counties = data[selectedProvince]; // แสดงเขตของจังหวัดที่เลือก
+            } else {
+                // แสดงทุกเขตในทุกจังหวัด
+                counties = Object.values(data).flat();
+            }
+
+            counties.forEach(county => {
+                const option = document.createElement('option');
+                option.value = county;
+                option.textContent = county;
+                countySelect.appendChild(option);
+            });
+        }
+
+        // เมื่อเปลี่ยนการเลือกจังหวัด
+        provinceSelect.addEventListener('change', function() {
+            const selectedProvince = provinceSelect.value;
+            populateCounties(selectedProvince);
+        });
+
+        // เรียกฟังก์ชันเริ่มต้น
+        populateProvinces();
+        populateCounties(); // แสดงทุกเขตเมื่อยังไม่ได้เลือกจังหวัด
+
+    </script>
+</body>
+</html>
