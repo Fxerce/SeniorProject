@@ -5,32 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="HomeCMStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> <!--Link cdn Icon-->
+    <link rel="stylesheet" href="navbarCMStyle.css">
 </head>
 <body>
 
-    <!-- Navigation -->
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="brand">
-                    <h1 class="Purely">Purely</h1>
-                    <h1 class="Trace">Trace</h1>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="SignIn.html?tab=signin">Sign In</a></li>
-                    <li>|</li>
-                    <li><a href="SignIn.html?tab=signup">Sign Up</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <div id="navbar"></div>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h3>Purely Trace</h3>
             <input class="Input" type="text" name="TrackingId" placeholder="Insert the Product ID">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass" id="iconsearch"></i>
             <!--<br><button class="btn-secondary">Learn about our farm</button>-->
         </div>
     </section>
@@ -89,6 +76,16 @@
             </div>
         </div>
     </footer>
+
+    <!--Script for loading navbar-->
+    <script>
+        // Load navbarCM.html content
+        fetch('navbarCM.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+    </script>
 
 </body>
 </html>
