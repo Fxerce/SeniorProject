@@ -10,49 +10,49 @@ body {
 /*Body*/
 h1 {
     
-    margin-left: 20px;
+    margin-left: 1.25%;
     color: #184d47;
   }
 
 .form-container{
     display: flex; 
   justify-content: space-between; /* Ensures space is distributed evenly */
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
   align-items: stretch;
 }
 
 .left-container, .right-container{
-    border-radius: 50px;
+    border-radius: 20px;
     width: 48%;
-    padding: 20px;
+    padding: 1.25%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
   box-sizing: border-box;
   background-color: #C6EBC5;
 }
 
 
-label{
+label, #sub-text{
     font-weight: bolder;
-    font-size: 2rem;
+    font-size: 0.875rem;
     line-height: 2;
     color: #674747; /*not change*/
 }
 
 input[type="text"]{
     font-family: 'quicksand';
-    font-size: 16px;
+    font-size: 1rem;
     display: inline-block;
     border-radius: 20px;
     width: 30%;
-    height: 30px;
+    height: 6.25%;
     border-color: #4A4A44;
     background-color: #F5F5F5;
     color: #5C4033;
     font-weight: bold;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 10px;
+    padding-left: 0.625%;
+    padding-right: 0.625%;
+    margin-left: 0.625%;
   }
 
 
@@ -60,89 +60,89 @@ input[type="text"]{
 
 input[type="number"] {
     font-family: 'quicksand';
-    font-size: 16px;
+    font-size: 1rem;
     display: inline-block;
     border-radius: 20px;
     border-color: #4A4A44;
-    width: 30%;
-    height: 30px;
+    width: 20%;
+    height: 1.875%;
     background-color: #F5F5F5;
     color: #5C4033;
     font-weight: bold;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 10px;
+    padding-left: 0.625%;
+    padding-right: 0.625%;
+    margin-left: 0.625%;
 
 }
 
 input[type="url"] {
     font-family: 'quicksand';
-    font-size: 16px;
+    font-size: 1rem;
     display: inline-block;
     border-radius: 20px;
-    width: 45%;
-    height: 30px;
+    width: 50%;
+    height: 1.875%;
     border-color: #4A4A44;
     background-color: #F5F5F5;
     color: #5C4033;
     font-weight: bold;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 10px;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-left: 1%;
 }
 
 input[type="checkbox"]{
     display: inline-block;
-    width: 20px; 
-    height: 20px;
+    width: 2vw; 
+    height: 2vh;
     cursor: pointer; /* แสดงว่าเป็น clickable */
-    margin-right: 10px; /* ช่องว่างระหว่าง checkbox กับ label */
+    margin-right: 0.625%; /* ช่องว่างระหว่าง checkbox กับ label */
     vertical-align: middle; /* จัดแนวในแนวตั้ง */
-    margin-bottom: 10px;
+    margin-bottom: 0.625%;
 }
 
 
 .sub-Text, .sub-checkboxes{
     display: none; /*hide sub-element */
-    margin-left: 20px;
+    margin-left: 1.25%;
     border: 20px;
     
   }
 
 select{
     font-family: 'quicksand';
-    font-size: 16px;
+    font-size: 1vw;
     font-weight: bold;
-    width: 85px;
-    height: 30px;
+    width: 15%;
+    height: 4vh;
     background-color: #FA7070;
     color: #FFF2F2;
     border-radius: 20px;
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 10px;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-left: 1%;
 }
 
 option{
     font-family: 'quicksand';
-    font-size: 16px;
+    font-size: 1vw;
     font-weight: bold;
     background-color: #E6BAA3;
 }
 
 /*Right-container*/
 #LocationLink{
-    margin-top: 20px;
+    margin-top: 2%;
 }
 
 #btn{
     font-family: 'quicksand';
-    font-size: 22px;
+    font-size: 1.5vw;
     font-weight: bolder;
-    width: 180px;
-    height: 80px;
+    width: 15%;
+    height: 10vh;
     border-radius: 100px;
     border: none;
     background-color: #5AA469;
@@ -159,3 +159,66 @@ option{
     background-color:  #A6CF98;
     color: #5C4033;
 } 
+
+/* Media queries สำหรับการจัด layout */
+@media (min-width: 1025px) {
+  .left-container, .right-container {
+      width: 48%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .left-container, .right-container {
+      width: 100%;
+      margin-bottom: 20px;
+      margin-inline: 20px;
+  }
+  input::placeholder{
+    font-size: 2vh;
+    margin-left: 5%;
+  }
+
+  input[type="text"], input[type="number"], input[type="url"] {
+      width: 90%;
+  }
+
+  #btn {
+      width: 30%;
+      height: 8vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .left-container, .right-container {
+      width: 100%;
+      margin-bottom: 15px;
+  }
+  select{
+    height: 3vh;
+  }
+  select, option{
+    font-size: 1.5vh;
+  }
+  .boldLabel{
+    font-size: 2vh;
+  }
+
+  input[type="text"], input[type="number"], input[type="url"] {
+      width: 60%;
+      height: 2vh;
+  }
+  input::placeholder{
+    font-size: 1.5vh;
+  }
+
+  #btn {
+      width: 50vw;
+      height: 7vh;
+      font-size: 5vw;
+  }
+}
