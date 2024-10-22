@@ -7,7 +7,7 @@
     background-color: white;
     padding: 1% 2%;
     border-bottom: 1px solid #ddd;
-    height: auto;
+    height: 10vh;
 }
 
 .navbar .container {
@@ -81,13 +81,13 @@
         height: 70px;
     }
     .brand {
-        font-size: 4vw;
+        font-size: 3vw;
     }
     .nav-links {
         gap: 3%;
     }
     .nav-links li {
-        font-size: 3vw;
+        font-size: 2.5vw;
     }
 }
 
@@ -98,7 +98,7 @@
         height: auto;
     }
     .brand {
-        font-size: 8vw;
+        font-size: 4vw;
     }
     .nav-links {
         flex-direction: row;
@@ -106,6 +106,6 @@
         gap: 1vw;
     }
     .nav-links li {
-        font-size: 6vw;
+        font-size: 3.5vw;
     }
 }

@@ -171,14 +171,48 @@
     </form>
 
     <!--Scipt for Nav Bar-->
-    <script>
-        // Load navbar.html content
-        fetch('navbarFactory.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar').innerHTML = data;
-            });
-    </script>
+<script>
+    // Load navbar.html content
+    fetch('navbarFactory.html')
+        .then(response => response.text())
+        .then(data => {
+            console.log(data); // ดูเนื้อหาที่โหลดมา
+            document.getElementById('navbar').innerHTML = data;
+        });
+</script>
+<script>
+    function initializeNavbar() {
+        const menuSymbol = document.querySelector('.menu-symbol'); // ปุ่มเมนู
+        const navLinks = document.querySelector('.nav-links'); // ลิงก์ใน navbar
+
+        // ซ่อนไว้ nav-links สำหรับหน้าจอเล็ก
+        navLinks.style.display = "none";
+
+        menuSymbol.addEventListener('click', function() {
+            console.log("Menu symbol clicked!"); // ตรวจสอบว่าเมนูถูกคลิก
+            navLinks.classList.toggle('active'); // เปลี่ยน class 'active' เพื่อจัดการการแสดงผล
+
+            // ปรับการแสดงผลของ navLinks ตาม class 'active'
+            if (navLinks.classList.contains('active')) {
+                console.log("Showing nav-links"); // ตรวจสอบเมื่อแสดง nav-links
+                navLinks.style.display = "flex"; // แสดงเมนู
+            } else {
+                console.log("Hiding nav-links"); // ตรวจสอบเมื่อซ่อน nav-links
+                setTimeout(() => {
+                    navLinks.style.display = "none"; // ซ่อนเมนู
+                }, 200); // หน่วงเวลา 200 มิลลิวินาที
+            }
+        });
+
+        // ปิด nav-links เมื่อคลิกนอกเมนู
+        document.addEventListener('click', function(event) {
+            if (!menuSymbol.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('active');
+                navLinks.style.display = "none"; // ซ่อนเมนู
+            }
+        });
+    }
+</script>    
 
     <!--Script for Sub-Checkbox(Quality of milk)-->
     <script>
