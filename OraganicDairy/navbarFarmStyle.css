@@ -8,7 +8,7 @@
   background-color: white;
   padding: 10px 20px;
   border-bottom: 1px solid #ddd;
-  height: 100px;
+  height: 80px;
 }
 
 .navbar .container {
@@ -20,7 +20,7 @@
 
 
 .brand {
-  font-size: 64px !important;
+  font-size: 60px !important;
   font-weight: bold !important;
   font-family: 'inria serif', serif !important;
 }
@@ -47,7 +47,7 @@
 }
 
 .nav-links li {
-  font-size: 38px !important;
+  font-size: 24px !important;
   margin-left: auto;
   font-weight: bold;
   position: relative;
@@ -70,7 +70,7 @@
 }
 
 .dropdown-content{
-  font-size: 30px;
+  font-size: 22px;
   display: none;
   position: absolute;
   background-color: #C6EBC5;
