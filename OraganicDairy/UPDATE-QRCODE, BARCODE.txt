@@ -1,0 +1,16 @@
+UPDATE-QRCODE, BARCODE:
+- get ข้อมูลจาก text field บน UI ได้แล้ว
+- เอาผลลัพท์แสดงบน UI ได้แล้ว
+- มีทั้ง qrcode, barcode อยู่ไฟล์เดียวกัน และคนละไฟล์
+
+
+Steps:
+Command Promt:
+1. cd path folders
+2. python -m venv venv หรือ python3 -m venv venv
+3. venv\Scripts\activate
+4. install: pip install Flask qrcode python-barcode
+Run file:
+1. ดู (venv) ข้างหน้า
+2. python app.py
+3. เปิด http://127.0.0.1:5000/

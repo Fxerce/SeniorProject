@@ -3,92 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Information Form</title>
-    <link rel="stylesheet" href="prac.css">
+    <title>QR Code and Barcode Generator</title>
 </head>
 <body>
-    <header>
-        <h1>Purely Trace</h1>
-        <nav>
-            <ul>
-                <li><a href="#">General Information</a></li>
-                <li><a href="#">Raw Milk</a></li>
-                <li><a href="#">Shipping</a></li>
-            </ul>
-            <div class="menu-icon">
-                <span>☰</span>
-            </div>
-        </nav>
-    </header>
+    <h1>Generate QR Code and Barcode</h1>
+    <form id="generateForm">
+        <label for="product_id">Product ID:</label>
+        <input type="text" id="product_id" name="product_id" required><br><br>
+        <label for="milk_tank_number">Milk Tank Number:</label>
+        <input type="text" id="milk_tank_number" name="milk_tank_number" required><br><br>
+        <button type="submit">Generate</button>
+    </form>
 
-    <section class="form-section">
-        <form>
-            <div class="form-group">
-                <label for="company-name">Company Name / Entrepreneur Name</label>
-                <input type="text" id="company-name" placeholder="Enter company name">
-            </div>
+    <h2>Generated Codes</h2>
+    <div>
+        <h3>QR Code:</h3>
+        <img id="qrCode" alt="QR Code will appear here">
+    </div>
+    <div>
+        <h3>Barcode:</h3>
+        <img id="barcode" alt="Barcode will appear here">
+    </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="name">Name - Surname</label>
-                    <input type="text" id="name" placeholder="Enter name">
-                </div>
+    <script>
+        document.getElementById("generateForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-                <div class="form-group">
-                    <label for="country">Country</label>
-                    <select id="country">
-                        <option>Country</option>
-                        <!-- Add countries here -->
-                    </select>
-                </div>
+            const productId = document.getElementById("product_id").value;
+            const milkTankNumber = document.getElementById("milk_tank_number").value;
 
-                <div class="form-group">
-                    <label for="province">Province</label>
-                    <select id="province">
-                        <option>Province</option>
-                        <!-- Add provinces here -->
-                    </select>
-                </div>
-            </div>
+            const response = await fetch("/generate", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ product_id: productId, milk_tank_number: milkTankNumber })
+            });
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="tel">Tel</label>
-                    <input type="tel" id="tel" placeholder="Enter telephone">
-                </div>
-
-                <div class="form-group">
-                    <label for="fax">Fax</label>
-                    <input type="text" id="fax" placeholder="Enter fax">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="line-id">Line ID</label>
-                    <input type="text" id="line-id" placeholder="Enter Line ID">
-                </div>
-
-                <div class="form-group">
-                    <label for="facebook">Facebook</label>
-                    <input type="text" id="facebook" placeholder="Enter Facebook link">
-                </div>
-            </div>
-
-            <div class="form-group">
-                
-            </div>
-
-            <div class="form-group">
-                <label for="location">Location (Google Maps)</label>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8307080739294!2d-122.41941548467997!3d37.77902697975809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c7e8a2b65%3A0x40b82a53a255a47!2sCivic%20Center%2C%20San%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1636709252141!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-            <div>
-                <button type="submit" class="save-button">Saved</button>
-            </div>
-        </form>
-    </section>
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById("qrCode").src = `/${data.qr_code_url}`;
+                document.getElementById("barcode").src = `/${data.barcode_url}`;
+            } else {
+                alert("Error generating codes.");
+            }
+        });
+    </script>
 </body>
 </html>
