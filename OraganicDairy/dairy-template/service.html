@@ -101,71 +101,86 @@
                 <p class="section-title bg-white text-center text-primary px-3">Our journey</p>
                 <h1 class="mb-5">[Product Name]</h1>
             </div>
+
             <div class="row gy-5 gx-4">
                 <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item d-flex h-100">
                         <div class="service-img">
-                            <img class="img-fluid" src="img/service-1.jpg" alt="">
+                            <img class="img-fluid" src="img/service-1.jpg" alt="Farm Image">
                         </div>
                         <div class="service-text p-5 pt-0">
                             <div class="service-icon">
-                                <img class="img-fluid rounded-circle" src="img/service-1.jpg" alt="">
+                                <img class="img-fluid rounded-circle" src="img/service-1.jpg" alt="Farm Icon">
                             </div>
                             <h5 class="mb-3">Farm</h5>
-                            <p class="mb-2">Batch Number: [batchnumber]</p>
-                            <p class="mb-2">Quality: [quality]</p>
-                            <p class="mb-2">Temperature: [temperature]</p>
-                            <p class="mb-2">Collected Time: [collectime]</p>
-                            <p class="mb-2">Deliveried Time: [deliverytime]</p>
-                            <p class="mb-2">Farm Name: [farm_name]</p>
-                            <p class="mb-2">Farmer Name: [farmer_name]</p>
-                            <p class="mb-2">Address: [address]</p>
-                            <!--<a class="btn btn-square rounded-circle" href=""><i class="bi bi-chevron-double-right"></i></a>-->
+                            <p>Batch Number: <span id="batchnumber">[batchnumber]</span></p>
+                            <p>Quality: <span id="quality">[quality]</span></p>
+                            <p>Temperature: <span id="temperature">[temperature]</span></p>
+                            <button class="more-info-btn">More Information</button>
+                            <div class="more-info-content" style="display: none;">
+                                <p>Collected Time: <span id="collectime">[collectime]</span></p>
+                                <p>Delivered Time: <span id="deliverytime">[deliverytime]</span></p>
+                                <p>Farm Name: <span id="farm_name">[farm_name]</span></p>
+                                <p>Farmer Name: <span id="farmer_name">[farmer_name]</span></p>
+                                <p>Address: <span id="address">[address]</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            
                 <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item d-flex h-100">
                         <div class="service-img">
-                            <img class="img-fluid" src="img/service-2.jpg" alt="">
+                            <img class="img-fluid" src="img/service-2.jpg" alt="Delivery Image">
                         </div>
                         <div class="service-text p-5 pt-0">
                             <div class="service-icon">
-                                <img class="img-fluid rounded-circle" src="img/service-2.jpg" alt="">
+                                <img class="img-fluid rounded-circle" src="img/service-2.jpg" alt="Delivery Icon">
                             </div>
                             <h5 class="mb-3">Delivery From Farm to Factory</h5>
-                            <p class="mb-2">Pick-Up Time: [pickuptime]</p>
-                            <p class="mb-2">Quality: [quality]</p>
-                            <p class="mb-2">Temperature: [temperature]</p>
-                            <p class="mb-2">Deliveried Time: [deliverytime]</p>  
-                            <p class="mb-2">Deliver Name: [ชื่อคนส่ง]</p>
-                            <p class="mb-2">Company Name: [company_name]</p>
-                            <!--<a class="btn btn-square rounded-circle" href=""><i class="bi bi-chevron-double-right"></i></a>-->
+                            <p>Pick-Up Time: <span id="pickuptime">[pickuptime]</span></p>
+                            <p>Quality: <span id="quality2">[quality]</span></p>
+                            <p>Temperature: <span id="temperature2">[temperature]</span></p>
+                            <p>Delivered Time: <span id="deliverytime2">[deliverytime]</span></p>
+
+                            <button class="more-info-btn">More Information</button>
+                            <div class="more-info-content" style="display: none;">
+                                <p>Deliver Name: <span id="deliver_name">[ชื่อคนส่ง]</span></p>
+                                <p>Company Name: <span id="company_name">[company_name]</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            
                 <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item d-flex h-100">
-                        <div class="service-img">
-                            <img class="img-fluid" src="img/service-3.jpg" alt="">
-                        </div>
-                        <div class="service-text p-5 pt-0">
-                            <div class="service-icon">
-                                <img class="img-fluid rounded-circle" src="img/service-3.jpg" alt="">
-                            </div>
-                            <h5 class="mb-3">Dairy Factory</h5>
-                            <p class="mb-2">Pick-Up time: []</p>
-                            <p class="mb-2">Product Lot: []</p>
-                            <p class="mb-2">Quality: [quality]</p>
-                            <p class="mb-2">Temperature: [temperature]</p>
-                            <p class="mb-2">Deliveried Time: [deliverytime]</p>
-                            <p class="mb-2">Company Name: [company_name]</p>
-                            <p class="mb-2">Address: [address]</p>  
-                            <!--<a class="btn btn-square rounded-circle" href=""><i class="bi bi-chevron-double-right"></i></a>-->
-                        </div>
-                    </div>
+                      <div class="service-img">
+                          <img class="img-fluid" src="img/service-3.jpg" alt="Factory Image">
+                      </div>
+                      <div class="service-text p-5 pt-0">
+                          <div class="service-icon">
+                              <img class="img-fluid rounded-circle" src="img/service-3.jpg" alt="Factory Icon">
+                          </div>
+                          <h5 class="mb-3">Dairy Factory</h5>
+                          <p>Pick-Up time: <span id="pickuptime3">[]</span></p>
+                          <p>Product Lot: <span id="product_lot">[]</span></p>
+                          <p>Quality: <span id="quality3">[quality]</span></p>
+                          <p>Temperature: <span id="temperature3">[temperature]</span></p>
+                          <p>Delivered Time: <span id="deliverytime3">[deliverytime]</span></p>
+
+                          <button class="more-info-btn">More Information</button>
+                          <div class="more-info-content" style="display: none;">
+                            <p>Company Name: <span id="company_name3">[company_name]</span></p>
+                            <p>Address: <span id="address3">[address]</span></p>
+                            <p>Website: <span id="address3">[website]</span></p>
+                          </div>
+                      </div>
+                  </div>
                 </div>
             </div>
+            
+
+
             <div class="mb-5"></div>
             <div class="row gy-5 gx-4">
                 <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -182,8 +197,11 @@
                             <p class="mb-2">Quality: [quality]</p>
                             <p class="mb-2">Temperature: [temperature]</p>
                             <p class="mb-2">Deliveried Time: [deliverytime]</p>  
-                            <p class="mb-2">Deliver Name: [ชื่อคนส่ง]</p>
-                            <p class="mb-2">Company Name: [company_name]</p>
+                            <button class="more-info-btn">More Information</button>
+                            <div class="more-info-content" style="display: none;">
+                                <p>Deliver Name: <span id="deliver_name">[ชื่อคนส่ง]</span></p>
+                                <p>Company Name: <span id="company_name">[company_name]</span></p>
+                            </div>
                             <!--<a class="btn btn-square rounded-circle" href=""><i class="bi bi-chevron-double-right"></i></a>-->
                         </div>
                     </div>
@@ -202,12 +220,26 @@
                             <p class="mb-2">Product Lot: []</p>
                             <p class="mb-2">Quality: [quality]</p>
                             <p class="mb-2">Temperature: [temperature]</p>
-                            <p class="mb-2">Company Name: [company_name]</p>
-                            <p class="mb-2">Address: [address]</p>  
+                            <button class="more-info-btn">More Information</button>
+                          <div class="more-info-content" style="display: none;">
+                            <p>Company Name: <span id="company_name3">[company_name]</span></p>
+                            <p>Address: <span id="address3">[address]</span></p>
+                            <p>Website: <span id="address3">[website]</span></p>
+                          </div> 
                             <!--<a class="btn btn-square rounded-circle" href=""><i class="bi bi-chevron-double-right"></i></a>-->
                         </div>
                     </div>
                 </div>
+                <script>
+                    const moreInfoBtns = document.querySelectorAll('.more-info-btn');
+                    moreInfoBtns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const content = btn.nextElementSibling;
+                            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+                            btn.textContent = btn.textContent === 'More Information' ? 'Less Information' : 'More Information';
+                        });
+                    });
+                </script>
                 <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item d-flex h-100">
                         <div class="service-img">
@@ -225,6 +257,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Service End -->
 
 
@@ -311,6 +344,17 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!--Script More Information-->
+    <script>
+        const moreInfoBtn = document.querySelector('.more-info-btn');
+        const moreInfoContent = document.querySelector('.more-info-content');
+      
+        moreInfoBtn.addEventListener('click', () => {
+          moreInfoContent.style.display = moreInfoContent.style.display === 'none' ? 'block' : 'none';
+          moreInfoBtn.textContent = moreInfoBtn.textContent === 'More Information' ? 'Less Information' : 'More Information'; // เปลี่ยนข้อความปุ่ม
+        });
+      </script>
 </body>
 
 </html>
