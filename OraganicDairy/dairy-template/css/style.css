@@ -26,6 +26,69 @@
     font-weight: 500 !important;
 }
 
+/***More Information - Tracking page**/
+.product-info {
+    display: flex; /* จัดเรียงภาพและรายละเอียดในแนวนอน */
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+    background-color: #fff; /* พื้นหลังสีขาว */
+  }
+  
+  .product-image {
+    width: 200px;
+    margin-right: 20px;
+  }
+  
+  .product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .product-details {
+    flex-grow: 1; /* ให้รายละเอียดขยายเต็มพื้นที่ที่เหลือ */
+  }
+  
+  .product-details h3 {
+    margin-top: 0;
+    color: #333; /* สีตัวอักษรเข้มขึ้น */
+  }
+  
+  .more-info-btn {
+    background-color: #4CAF50; /* สีเขียว */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease; /* เพิ่ม transition */
+  }
+  
+  .more-info-btn:hover {
+    background-color: #45a049; /* สีเขียวเข้มขึ้นเมื่อ hover */
+  }
+  
+  .more-info-content {
+    margin-top: 10px;
+    border-top: 1px solid #eee; /* เส้นแบ่ง */
+    padding-top: 10px;
+    transition: max-height 0.5s ease-out; /* เพิ่ม transition */
+    overflow: hidden; /* ป้องกันเนื้อหาล้น */
+  }
+  
+  /* เพิ่มการจัดรูปแบบสำหรับข้อมูลใน .more-info-content เพื่อให้อ่านง่าย */
+  .more-info-content p {
+    margin: 5px 0;
+  }
+
 
 /*** Spinner ***/
 #spinner {
